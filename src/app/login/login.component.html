@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div id="main" class="home">
+  <div class="container content">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="login-box">
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <h2 class="text-center">Anmelden</h2>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="form-group col-lg-6 col-md-8">
+              <label for="email">E-Mail Adresse</label>
+              <input type="email" class="form-control input-form" id="email" name="email" required [(ngModel)]="email">
+              <label for="password">Passwort</label>
+              <input type="password" class="form-control input-form" id="password" name="password" required [(ngModel)]="password">
+              <div class="button-wrapper">
+                <button class="button" type="submit">Abschicken</button>
+              </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-lg-6 col-md-8">
+                <p>Noch kein Konto? <a href="/signup">Hier geht's zur Registrierung</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
