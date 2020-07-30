@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../_types/User';
+import { AccountService} from '../account.service';
 
 @Component({
   selector: 'app-signup',
@@ -6,18 +8,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  title: string;
-  forename: string;
-  surname: string;
-  email: string;
-  password: string;
-  institution: string;
-  city: string;
-  researchArea: string;
+  user: User;
 
-  constructor() { }
+  constructor(
+    private accountService: AccountService,
+  ) {
+    this.user = {
+      account: {
+        email: '',
+        password: '',
+      },
+      profile: {
+        title: '',
+        forename: '',
+        surname: '',
+        institution: '',
+        city: '',
+        researchArea: '',
+      }
+    };
+  }
 
   ngOnInit(): void {
   }
 
+  newUser() {
+    console.log(this.user);
+    this.accountService.register(this.user)
+      .subscribe(
+        response => console.log('Success!', response),
+        error => console.error('Error!', error)
+      );
+  }
 }

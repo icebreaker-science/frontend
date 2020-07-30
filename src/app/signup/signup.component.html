@@ -11,23 +11,41 @@
           <div class="row justify-content-center">
             <div class="form-group col-lg-6 col-md-8">
               <label for="title">Titel</label>
-              <input type="text" class="form-control input-form" id="title" name="title" [(ngModel)]="title">
+              <input type="text" class="form-control input-form" id="title" name="title" [(ngModel)]="user.profile.title">
               <label for="firstname">Vorname</label>
-              <input type="text" class="form-control input-form" id="firstname" name="firstname" required [(ngModel)]="forename">
+              <input type="text" class="form-control input-form" id="firstname" name="firstname" required #firstname="ngModel" [(ngModel)]="user.profile.forename">
+              <div [hidden]="firstname.valid || firstname.untouched" class="form-alert">
+                Dieses Feld muss augefüllt werden.
+              </div>
               <label for="lastname">Nachname</label>
-              <input type="text" class="form-control input-form" id="lastname" name="lastname" required [(ngModel)]="surname">
+              <input type="text" class="form-control input-form" id="lastname" name="lastname" required #lastname="ngModel" [(ngModel)]="user.profile.surname">
+              <div [hidden]="lastname.valid || lastname.untouched" class="form-alert">
+                Dieses Feld muss augefüllt werden.
+              </div>
               <label for="email">E-Mail Adresse</label>
-              <input type="email" class="form-control input-form" id="email" name="email" required [(ngModel)]="email">
+              <input type="email" class="form-control input-form" id="email" name="email" required #mail="ngModel" [(ngModel)]="user.account.email">
+              <div [hidden]="mail.valid || mail.untouched" class="form-alert">
+                Dieses Feld muss augefüllt werden.
+              </div>
               <label for="password">Passwort</label>
-              <input type="password" class="form-control input-form" id="password" name="password" required [(ngModel)]="password">
+              <input type="password" class="form-control input-form" id="password" name="password" required #pw="ngModel" [(ngModel)]="user.account.password">
+              <div [hidden]="pw.valid || pw.untouched" class="form-alert">
+                Dieses Feld muss augefüllt werden.
+              </div>
               <label for="institution">Institution</label>
-              <input type="text" class="form-control input-form" id="institution" name="institution" required [(ngModel)]="institution">
+              <input type="text" class="form-control input-form" id="institution" name="institution" required #inst="ngModel" [(ngModel)]="user.profile.institution">
+              <div [hidden]="inst.valid || inst.untouched" class="form-alert">
+                Dieses Feld muss augefüllt werden.
+              </div>
               <label for="city">Stadt</label>
-              <input type="text" class="form-control input-form" id="city" name="city" required [(ngModel)]="city">
+              <input type="text" class="form-control input-form" id="city" name="city" required #metro="ngModel" [(ngModel)]="user.profile.city">
+              <div [hidden]="metro.valid || metro.untouched" class="form-alert">
+                Dieses Feld muss augefüllt werden.
+              </div>
               <label for="researchArea">Arbeitsfeld</label>
-              <input type="text" class="form-control input-form" id="researchArea" name="researchArea" [(ngModel)]="researchArea">
+              <input type="text" class="form-control input-form" id="researchArea" name="researchArea" [(ngModel)]="user.profile.researchArea">
               <div class="button-wrapper">
-                <button class="button" type="submit">Abschicken</button>
+                <button class="button" type="submit" (click)="newUser()">Abschicken</button>
               </div>
             </div>
           </div>
