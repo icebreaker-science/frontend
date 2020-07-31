@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { BackendService } from './backend.service';
 
 
 @Injectable({
@@ -7,15 +7,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class AccountService {
 
-  url = 'http://localhost:9090'; /* /api */
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  constructor(private http: HttpClient) { }
+  constructor(private backendService: BackendService) { }
 
   register(userData) {
-    return this.http.post<any>(`${this.url}/account/register`, userData, this.httpOptions);
+    return this.backendService.post(userData, '/account/register');
   }
 
 }
