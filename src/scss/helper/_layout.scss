@@ -34,8 +34,13 @@
 
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: $lightBlue;
+  }
+
+  &:disabled {
+    background-color: $lightgrey;
+    cursor: not-allowed;
   }
 
   &-wrapper {

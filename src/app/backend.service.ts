@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class BackendService {
 
-  url = 'http://localhost:9090'; /* /api */
+  url = /* 'http://localhost:9090'; */ '/api';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

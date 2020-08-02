@@ -33,7 +33,6 @@ export class SignupComponent implements OnInit {
   }
 
   newUser() {
-    console.log(this.user);
     this.accountService.register(this.user)
       .subscribe(
         response => console.log('Success!', response),
