@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
 
-  url = /* 'http://localhost:9090'; */ '/api';
+  url = environment.backendUrl;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
