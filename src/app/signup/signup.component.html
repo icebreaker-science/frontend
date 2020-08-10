@@ -44,6 +44,9 @@
               </div>
               <label for="researchArea">Arbeitsfeld</label>
               <input type="text" class="form-control input-form" id="researchArea" name="researchArea" [(ngModel)]="user.profile.researchArea">
+              <div class="error-container" [hidden]="!this.wrongCredentials">
+                <span class="error-container-text">Something went wrong...</span>
+              </div>
               <div class="button-wrapper">
                 <button class="button" type="submit" [disabled]="!registerForm.form.valid">Abschicken</button>
               </div>

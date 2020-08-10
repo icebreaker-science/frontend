@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../_types/User';
 import { AccountService} from '../account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -9,6 +10,8 @@ import { AccountService} from '../account.service';
 })
 export class SignupComponent implements OnInit {
   user: User;
+  wrongCredentials: boolean;
+  private router: Router;
 
   constructor(
     private accountService: AccountService,
@@ -27,6 +30,7 @@ export class SignupComponent implements OnInit {
         researchArea: '',
       }
     };
+    this.wrongCredentials = false;
   }
 
   ngOnInit(): void {
@@ -35,8 +39,8 @@ export class SignupComponent implements OnInit {
   newUser() {
     this.accountService.register(this.user)
       .subscribe(
-        response => console.log('Success!', response),
-        error => console.error('Error!', error)
+        () => this.router.navigateByUrl('/login'),
+        () => this.wrongCredentials = true,
       );
   }
 }
