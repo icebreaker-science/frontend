@@ -14,6 +14,19 @@
   margin-top: -1rem;
 }
 
+.error-container {
+  background-color: $lightRed;
+  border: 1px solid $red;
+  padding: 0.35rem 0.5rem 0.5rem;
+  border-radius: 0.25rem;
+  text-align: center;
+
+  &-text {
+    color: $red;
+    font-size: 0.85rem;
+  }
+}
+
 .button {
   display: inline-block;
   font-weight: 400;
