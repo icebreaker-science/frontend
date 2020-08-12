@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { BackendService } from './backend.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { map, switchMap } from 'rxjs/operators';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
+
+  public getLoggedInName = new Subject<string>();
 
   constructor(private backendService: BackendService) { }
 
@@ -21,21 +24,42 @@ export class AccountService {
 
   login(userData) {
     return new Observable((observer) => {
-      const response = this.backendService.post(
+      this.backendService.post(
         userData,
         '/account/login',
         {headers: new HttpHeaders({'Content-Type': 'application/json'}), responseType: 'text'}
-      );
-      response.subscribe(
+      ).pipe(
+        map(res => this.setSession(res)),
+        switchMap(
+          () => this.getUserProfile(),
+        )
+      ).subscribe(
         res => {
-          this.setSession(res);
+          this.setUsername(res);
           observer.next(res);
-        },
-        err => {
-          observer.error(err);
-        },
-      );
+          },
+        err => observer.error(err),
+        );
     });
+  }
+
+  getUserProfile() {
+    console.log('userprofile called');
+    return this.backendService.get(
+      '/account/my-profile',
+      {}
+    );
+  }
+
+  setUsername(res) {
+    const userName = `${res.forename} ${res.surname}`;
+    localStorage.setItem('username', userName);
+    this.getLoggedInName.next(userName);
+  }
+
+  getUsername() {
+    const userName = localStorage.getItem('username');
+    return userName ? userName : '';
   }
 
   setSession(token) {
@@ -44,12 +68,19 @@ export class AccountService {
   }
 
   logout() {
+    localStorage.removeItem('username');
     localStorage.removeItem('userToken');
     localStorage.removeItem('expiresAt');
+    this.getLoggedInName.next('');
   }
 
   isLoginValid() {
-    return Date.now() < parseInt(localStorage.getItem('expiresAt'), 10);
+    return (
+      localStorage.getItem('username') &&
+      localStorage.getItem('userToken') &&
+      localStorage.getItem('expiresAt') &&
+      Date.now() < parseInt(localStorage.getItem('expiresAt'), 10)
+    );
   }
 
 }

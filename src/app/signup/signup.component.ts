@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
   user: User;
   wrongCredentials: boolean;
-  private router: Router;
 
   constructor(
     private accountService: AccountService,
+    private router: Router,
   ) {
     this.user = {
       account: {

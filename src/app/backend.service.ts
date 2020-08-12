@@ -14,4 +14,8 @@ export class BackendService {
   post(data, urlOption, options) {
     return this.http.post<any>(`${this.url}${urlOption}`, data, options);
   }
+
+  get(urlOption, options) {
+    return this.http.get<any>(`${this.url}${urlOption}`, options);
+  }
 }
