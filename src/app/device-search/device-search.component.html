@@ -1,0 +1,9 @@
+<p>
+  A list of all devices:
+</p>
+
+<ul>
+  <li *ngFor="let d of devices$ | async">
+    {{ d.title }} ({{ d.id }}): {{ d.description }}
+  </li>
+</ul>

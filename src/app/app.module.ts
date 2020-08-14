@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -11,7 +11,10 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
-import {TokenInterceptor} from './token.interceptor';
+import { TokenInterceptor } from './token.interceptor';
+import { DeviceSearchComponent } from './device-search/device-search.component';
+import { DeviceCreationComponent } from './device-creation/device-creation.component';
+
 
 @NgModule({
   declarations: [
@@ -20,15 +23,17 @@ import {TokenInterceptor} from './token.interceptor';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    DeviceSearchComponent,
+    DeviceCreationComponent,
   ],
-    imports: [
-      BrowserModule,
-      HttpClientModule,
-      AppRoutingModule,
-      NgbModule,
-      FormsModule,
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    NgbModule,
+    FormsModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -38,4 +43,5 @@ import {TokenInterceptor} from './token.interceptor';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
