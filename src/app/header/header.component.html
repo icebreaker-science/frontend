@@ -10,9 +10,13 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/">Home</a>
       </li>
-      <li class="nav-item">
+      <li [hidden]="userName" class="nav-item">
         <a class="nav-link" routerLink="/login">Log In</a>
       </li>
     </ul>
+  </div>
+  <div [hidden]="!userName" class="navbar-profile">
+    <span class="navbar-profile-username">{{ userName }}</span>
+    <a class="navbar-profile-logout" (click)="logout()">Log Out</a>
   </div>
 </nav>

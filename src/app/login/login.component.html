@@ -9,15 +9,18 @@
             </div>
           </div>
           <div class="row justify-content-center">
-            <div class="form-group col-lg-6 col-md-8">
+            <form class="form-group col-lg-6 col-md-8" (ngSubmit)="login()" #loginForm="ngForm">
               <label for="email">E-Mail Adresse</label>
               <input type="email" class="form-control input-form" id="email" name="email" required [(ngModel)]="email">
               <label for="password">Passwort</label>
               <input type="password" class="form-control input-form" id="password" name="password" required [(ngModel)]="password">
-              <div class="button-wrapper">
-                <button class="button" type="submit">Abschicken</button>
+              <div class="error-container" [hidden]="!this.wrongCredentials">
+                <span class="error-container-text">Wrong email address and/or password</span>
               </div>
-            </div>
+              <div class="button-wrapper">
+                <button class="button" type="submit" [disabled]="!loginForm.form.valid">Abschicken</button>
+              </div>
+            </form>
             <div class="w-100"></div>
             <div class="col-lg-6 col-md-8">
                 <p>Noch kein Konto? <a routerLink="/signup">Hier geht's zur Registrierung</a></p>
