@@ -1,0 +1,23 @@
+<div>
+  <div>
+    <label>
+      Title:
+      <input type="text" [(ngModel)]="device.title" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Description:
+      <textarea [(ngModel)]="device.description"></textarea>
+    </label>
+  </div>
+  <div>
+    <label>
+      References:
+      <textarea [(ngModel)]="device.references"></textarea>
+    </label>
+  </div>
+  <div>
+    <button (click)="submit()">Submit</button>
+  </div>
+</div>
