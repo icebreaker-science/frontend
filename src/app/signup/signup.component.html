@@ -5,50 +5,50 @@
         <div class="signup-box">
           <div class="row justify-content-center">
             <div class="col-lg-12">
-              <h2 class="text-center">Registrierung</h2>
+              <h2 class="text-center">Register for Icebreaker</h2>
             </div>
           </div>
           <div class="row justify-content-center">
             <form class="form-group col-lg-6 col-md-8" (ngSubmit)="newUser()" #registerForm="ngForm">
               <label for="title">Titel</label>
               <input type="text" class="form-control input-form" id="title" name="title" [(ngModel)]="user.profile.title">
-              <label for="firstname">Vorname *</label>
+              <label for="firstname">First name *</label>
               <input type="text" class="form-control input-form" id="firstname" name="firstname" required #firstname="ngModel" [(ngModel)]="user.profile.forename">
               <div [hidden]="firstname.valid || firstname.untouched" class="form-alert">
-                Dieses Feld muss augefüllt werden.
+                This field is required.
               </div>
-              <label for="lastname">Nachname *</label>
+              <label for="lastname">Last name *</label>
               <input type="text" class="form-control input-form" id="lastname" name="lastname" required #lastname="ngModel" [(ngModel)]="user.profile.surname">
               <div [hidden]="lastname.valid || lastname.untouched" class="form-alert">
-                Dieses Feld muss augefüllt werden.
+                This field is required.
               </div>
-              <label for="email">E-Mail Adresse *</label>
+              <label for="email">Email *</label>
               <input type="email" class="form-control input-form" id="email" name="email" required #mail="ngModel" [(ngModel)]="user.account.email">
               <div [hidden]="mail.valid || mail.untouched" class="form-alert">
-                Dieses Feld muss augefüllt werden.
+                This field is required.
               </div>
-              <label for="password">Passwort *</label>
+              <label for="password">Password *</label>
               <input type="password" class="form-control input-form" id="password" name="password" required #pw="ngModel" [(ngModel)]="user.account.password">
               <div [hidden]="pw.valid || pw.untouched" class="form-alert">
-                Dieses Feld muss augefüllt werden.
+                This field is required.
               </div>
               <label for="institution">Institution *</label>
               <input type="text" class="form-control input-form" id="institution" name="institution" required #inst="ngModel" [(ngModel)]="user.profile.institution">
               <div [hidden]="inst.valid || inst.untouched" class="form-alert">
-                Dieses Feld muss augefüllt werden.
+                This field is required.
               </div>
-              <label for="city">Stadt *</label>
+              <label for="city">City *</label>
               <input type="text" class="form-control input-form" id="city" name="city" required #metro="ngModel" [(ngModel)]="user.profile.city">
               <div [hidden]="metro.valid || metro.untouched" class="form-alert">
-                Dieses Feld muss augefüllt werden.
+                This field is required.
               </div>
-              <label for="researchArea">Arbeitsfeld</label>
+              <label for="researchArea">Research Area</label>
               <input type="text" class="form-control input-form" id="researchArea" name="researchArea" [(ngModel)]="user.profile.researchArea">
               <div class="error-container" [hidden]="!this.wrongCredentials">
                 <span class="error-container-text">Something went wrong...</span>
               </div>
               <div class="button-wrapper">
-                <button class="button" type="submit" [disabled]="!registerForm.form.valid">Abschicken</button>
+                <button class="button" type="submit" [disabled]="!registerForm.form.valid">Register</button>
               </div>
             </form>
           </div>
