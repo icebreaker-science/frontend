@@ -4,6 +4,7 @@ import { copyWikiPage, WikiPage } from './_types/WikiPage';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import {Availability} from './_types/Availability';
 
 
 @Injectable({
@@ -60,6 +61,18 @@ export class WikiService {
             resolve(id);
           },
           reject
+        );
+      })
+    );
+  }
+
+  sendDeviceData(device: Availability): Promise<number> {
+    return new Promise<number>(((resolve, reject) => {
+        this.http.post<number>(`${this.backendService.url}/device-availability/`, JSON.stringify(device), {
+          headers: new HttpHeaders({'Content-Type': 'application/json'})
+        }).subscribe(
+          () => resolve,
+          () => reject,
         );
       })
     );

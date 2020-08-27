@@ -18,6 +18,30 @@
     </label>
   </div>
   <div>
+    <label>
+      Comment:
+      <textarea [(ngModel)]="availability.comment"></textarea>
+    </label>
+  </div>
+  <div>
+    <label>
+      Postal Code:
+      <textarea [(ngModel)]="availability.germanPostalCode"></textarea>
+    </label>
+  </div>
+  <div>
+    <label>
+      Institution:
+      <textarea [(ngModel)]="availability.institution"></textarea>
+    </label>
+  </div>
+  <div>
+    <label>
+      Research Group:
+      <textarea [(ngModel)]="availability.researchGroup"></textarea>
+    </label>
+  </div>
+  <div>
     <button (click)="submit()">Submit</button>
   </div>
 </div>
