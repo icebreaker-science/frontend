@@ -70,8 +70,8 @@ export class WikiService {
         this.http.post<number>(`${this.backendService.url}/device-availability/`, JSON.stringify(device), {
           headers: new HttpHeaders({'Content-Type': 'application/json'})
         }).subscribe(
-          () => resolve,
-          () => reject,
+          (res) => resolve(res),
+          reject,
         );
       })
     );

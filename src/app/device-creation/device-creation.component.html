@@ -2,7 +2,7 @@
   <div class="container content">
     <div class="row">
       <div class="col-lg-12">
-        <div class="login-box">
+        <div class="device-creation-box">
           <div class="row justify-content-center">
             <div class="col-lg-12">
               <h2 class="text-center">Add device</h2>
@@ -18,8 +18,8 @@
               <input type="text" class="form-control input-form" id="references" name="references" [(ngModel)]="device.references" />
               <label for="comment">Comment:</label>
               <input type="text" class="form-control input-form" id="comment" name="comment" [(ngModel)]="availability.comment" />
-              <label for="germanPostalCode">Postal Code:</label>
-              <input type="text" class="form-control input-form" id="germanPostalCode" name="germanPostalCode" [(ngModel)]="availability.germanPostalCode" />
+              <label for="germanPostalCode">Postal Code: *</label>
+              <input type="text" class="form-control input-form" id="germanPostalCode" name="germanPostalCode" required pattern="[0-9]{5}" [(ngModel)]="availability.germanPostalCode" />
               <label for="institution">Institution: *</label>
               <input type="text" class="form-control input-form" id="institution" name="institution" required [(ngModel)]="availability.institution" />
               <label for="researchGroup">Research Group:</label>
