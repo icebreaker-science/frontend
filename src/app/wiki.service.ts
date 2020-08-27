@@ -3,7 +3,6 @@ import { BackendService } from './backend.service';
 import { copyWikiPage, WikiPage } from './_types/WikiPage';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import {Availability} from './_types/Availability';
 
 

@@ -12,6 +12,7 @@ import {Availability} from '../_types/Availability';
 })
 export class DeviceCreationComponent implements OnInit {
 
+  error = false;
   device: WikiPage = {
     type: 'device',
     title: '',
@@ -45,6 +46,7 @@ export class DeviceCreationComponent implements OnInit {
        console.log(`New device created, ID=${ id }.`);
        await this.router.navigateByUrl('/device-search');
      } catch (e) {
+       this.error = true;
        console.error('Something went wrong!', e);
      }
   }
