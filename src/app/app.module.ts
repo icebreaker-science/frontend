@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from './token.interceptor';
 import { DeviceSearchComponent } from './device-search/device-search.component';
 import { DeviceCreationComponent } from './device-creation/device-creation.component';
+import { NetworkComponent } from './network/network.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { DeviceCreationComponent } from './device-creation/device-creation.compo
     SignupComponent,
     DeviceSearchComponent,
     DeviceCreationComponent,
+    NetworkComponent,
   ],
   imports: [
     BrowserModule,

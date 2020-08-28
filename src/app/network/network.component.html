@@ -1,0 +1,45 @@
+<div class="component-container" *ngIf="nodes">
+  <div class="graph" #network>
+
+  </div>
+
+  <div
+    class="panel"
+  >
+    <input
+      #keywordInput
+      id="typeahead-basic"
+      type="text"
+      class="form-control"
+      placeholder="Keyword"
+      [ngbTypeahead]="searchKeyword"
+      (selectItem)="addKeyword($event, keywordInput)"
+    />
+
+    <div>
+      <div *ngFor="let n of selectedNodes">
+        {{ n }}
+        <button (click)="removeKeyword(n)">x</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div
+  *ngIf="tooltip.selectedNode"
+  class="network-tooltip"
+  style="left: {{ tooltip.pos.left }}px; top: {{ tooltip.pos.top }}px;"
+>
+  <div class="network-tooltip__title">{{ tooltip.selectedNode.name }}</div>
+  <div>Number publications: {{ tooltip.selectedNode.weight }}</div>
+</div>
+
+<div
+  *ngIf="tooltip.selectedEdge"
+  class="network-tooltip"
+  style="left: {{ tooltip.pos.left }}px; top: {{ tooltip.pos.top }}px;"
+>
+  <div class="network-tooltip__title">{{ tooltip.selectedEdge.node1 }} - {{ tooltip.selectedEdge.node2 }}</div>
+  <div>Number publications: {{ tooltip.selectedEdge.weight }}</div>
+</div>

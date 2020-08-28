@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { DeviceSearchComponent } from './device-search/device-search.component';
 import { DeviceCreationComponent } from './device-creation/device-creation.component';
+import { NetworkComponent } from './network/network.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'device-search', component: DeviceSearchComponent },
   { path: 'device-creation', component: DeviceCreationComponent },
+  { path: 'network', component: NetworkComponent },
 ];
 
 @NgModule({
