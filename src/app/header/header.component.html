@@ -1,31 +1,35 @@
-<nav id="header" class="navbar navbar-expand-sm navbar-dark header">
-  <a class="navbar-brand" routerLink="/">
-    <img alt="Logo" src="/assets/img/logo.png" height="40" width="40">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/network">Network</a>
-      </li>
-      <li [hidden]="!userName" class="nav-item">
-        <a class="nav-link" routerLink="/device-search">Search Devices</a>
-      </li>
-      <li [hidden]="!userName" class="nav-item">
-        <a class="nav-link" routerLink="/device-creation">Add Device</a>
-      </li>
-      <li [hidden]="userName" class="nav-item">
-        <a class="nav-link" routerLink="/login">Log In</a>
-      </li>
-    </ul>
+<nav id="header" class="header" [ngClass]="{'open' : navOpen}">
+  <div class="header-bar">
+    <a class="header-logo" routerLink="/">
+      <img alt="Logo" src="/assets/img/icebreaker.png" height="44" width="240">
+    </a>
+    <a class="header-toggle" (click)="toggleNav()">
+      <span class="header-toggle-first"></span>
+      <span class="header-toggle-second"></span>
+      <span class="header-toggle-third"></span>
+    </a>
   </div>
-  <div [hidden]="!userName" class="navbar-profile">
-    <span class="navbar-profile-username">{{ userName }}</span>
-    <a class="navbar-profile-logout" (click)="logout()">Log Out</a>
+  <div class="header-inner">
+    <div class="header-nav">
+      <ul class="header-list">
+        <li [hidden]="!userName" class="header-list-item">
+          <a class="header-link" routerLink="/discover">Discover</a>
+        </li>
+        <li [hidden]="!userName" class="header-list-item">
+          <a class="header-link" routerLink="/wiki">Wiki</a>
+        </li>
+        <li [hidden]="!userName" class="header-list-item">
+          <a class="header-link" routerLink="/device-search">Search Devices</a>
+        </li>
+        <li [hidden]="!userName" class="header-list-item">
+          <a class="header-link" routerLink="/device-creation">Add Device</a>
+        </li>
+      </ul>
+    </div>
+    <div class="header-profile">
+      <a [hidden]="userName" class="header-profile-link login" routerLink="/login">Log In</a>
+      <span [hidden]="!userName" class="header-profile-username">{{ userName }}</span>
+      <a [hidden]="!userName" class="header-profile-link logout" (click)="logout()">Log Out</a>
+    </div>
   </div>
 </nav>
