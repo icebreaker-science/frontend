@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
   newUser() {
     this.accountService.register(this.user)
       .subscribe(
-        () => this.router.navigateByUrl('/login'),
+        () => this.router.navigateByUrl('/login?registered=true'),
         () => this.wrongCredentials = true,
       );
   }
