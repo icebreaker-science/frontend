@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BackendService } from './backend.service';
 import { NetworkEdge } from './_types/NetworkEdge';
 import { NetworkNode } from './_types/NetworkNode';
+import { Paper } from './_types/Paper';
 
 
 /**
@@ -61,6 +62,18 @@ export class NetworkService {
       this.http.get<NetworkEdge[]>(`${this.backendService.url}/network/graph/shortest_path?nodes=${ nodeNames.join(',') }`).subscribe(
         (edges) => {
           resolve(edges);
+        },
+        reject
+      );
+    });
+  }
+
+
+  getPapers(ids: number[]): Promise<Paper[]> {
+    return new Promise<Paper[]>((resolve, reject) => {
+      this.http.get<Paper[]>(`${this.backendService.url}/network/paper?ids=${ ids.join(',') }`).subscribe(
+        (paper) => {
+          resolve(paper);
         },
         reject
       );

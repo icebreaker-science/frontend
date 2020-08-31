@@ -3,6 +3,8 @@
 
 .component-container {
   display: flex;
+  // TODO The height of the header should not be hard coded. How is the height currently defined? Is there a variable that can be reused?
+  height: calc(100vh - 66px); // The height of the screen minus the header
 }
 
 
@@ -25,8 +27,6 @@
 .graph {
   border-right: 4px solid $lightgrey;
   flex-grow: 1;
-  // TODO The height of the header should not be hard coded. How is the height currently defined? Is there a variable that can be reused?
-  height: calc(100vh - 66px); // The height of the screen minus the header
 }
 
 
@@ -34,4 +34,35 @@
 
 .panel {
   width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.selected-nodes {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 4px solid $lightgrey;
+}
+
+
+.reference-list__edge-name {
+  font-weight: bold;
+}
+
+
+.reference-list {
+  overflow: auto;
+  margin-bottom: 20px;
+}
+
+
+.reference-list__paper {
+  margin-top: 20px;
+}
+
+
+.reference-list__paper__doi a {
+  color: $blue;
+  text-decoration: underline;
 }
