@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import { AccountService } from '../account.service';
-import { Router } from '@angular/router';
+import { NavigationStart, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +9,16 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   userName: string;
+  navOpen = false;
 
   constructor(
     private accountService: AccountService,
     private router: Router
   ) {
     this.userName = this.accountService.getUsername();
+    this.router.events.subscribe((ev) => {
+      if (ev instanceof NavigationStart) { this.closeNav(); }
+    });
   }
 
   ngOnInit(): void {
@@ -24,5 +28,13 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.accountService.logout();
     this.router.navigateByUrl('/');
+  }
+
+  toggleNav() {
+    this.navOpen = !this.navOpen;
+  }
+
+  closeNav() {
+    this.navOpen = false;
   }
 }

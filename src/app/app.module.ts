@@ -15,6 +15,8 @@ import { TokenInterceptor } from './token.interceptor';
 import { DeviceSearchComponent } from './device-search/device-search.component';
 import { DeviceCreationComponent } from './device-creation/device-creation.component';
 import { NetworkComponent } from './network/network.component';
+import { DiscoverComponent } from './discover/discover.component';
+import { WikiComponent } from './wiki/wiki.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { NetworkComponent } from './network/network.component';
     DeviceSearchComponent,
     DeviceCreationComponent,
     NetworkComponent,
+    DiscoverComponent,
+    WikiComponent,
   ],
   imports: [
     BrowserModule,
