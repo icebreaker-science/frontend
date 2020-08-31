@@ -6,7 +6,6 @@ import { SignupComponent } from './signup/signup.component';
 import { DeviceSearchComponent } from './device-search/device-search.component';
 import { DeviceCreationComponent } from './device-creation/device-creation.component';
 import { NetworkComponent } from './network/network.component';
-import { DiscoverComponent } from './discover/discover.component';
 import { WikiComponent } from './wiki/wiki.component';
 
 
@@ -17,7 +16,6 @@ const routes: Routes = [
   { path: 'device-search', component: DeviceSearchComponent },
   { path: 'device-creation', component: DeviceCreationComponent },
   { path: 'network', component: NetworkComponent },
-  { path: 'discover', component: DiscoverComponent },
   { path: 'wiki', component: WikiComponent },
 ];
 
