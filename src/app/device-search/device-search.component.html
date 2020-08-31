@@ -1,9 +1,22 @@
-<p>
-  A list of all devices:
-</p>
-
-<ul>
-  <li *ngFor="let d of devices$ | async">
-    {{ d.title }} ({{ d.id }}): {{ d.description }}
-  </li>
-</ul>
+<div id="main">
+  <div class="container-fluid content">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <h2 class="text-center">Devices</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="device-container col-md-10">
+        <div *ngFor="let d of devices$ | async" class="device-element">
+          <div class="device-element-img">
+            <div class="device-element-img-inner"></div>
+          </div>
+          <div class="device-element-content">
+            <h4 class="device-element-headline">{{ d.title }}</h4>
+            <p class="device-element-desc">{{ d.description.slice(0,100) + '...' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

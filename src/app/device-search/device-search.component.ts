@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { WikiService } from '../wiki.service';
-import { Observable } from 'rxjs';
-import { WikiPage } from '../_types/WikiPage';
 
 
 @Component({
