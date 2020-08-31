@@ -6,6 +6,7 @@ import { NetworkEdge } from '../_types/NetworkEdge';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
+import { Paper } from '../_types/Paper';
 
 
 @Component({
@@ -33,6 +34,7 @@ export class NetworkComponent implements AfterViewInit {
     selectedNode: null,
     selectedEdge: null,
   };
+  papers: Paper[];
 
   // Contains all nodes in the database
   nodes: NetworkNode[];
@@ -206,11 +208,33 @@ export class NetworkComponent implements AfterViewInit {
     const selectionChanged = ($event) => {
       this.tooltip.selectedNode = null;
       this.tooltip.selectedEdge = null;
+      this.papers = null;
 
       if ($event.nodes.length === 1) {
+        // A node was selected.
         this.tooltip.selectedNode = this.nodeMap.get($event.nodes[0]);
       } else if ($event.nodes.length === 0 && $event.edges.length === 1) {
+        // An edge was selected.
         this.tooltip.selectedEdge = this.currentEdgeMap.get($event.edges[0]);
+        this.fetchPapers(this.tooltip.selectedEdge)
+          .then((papers) => {
+            // Make sure that the edge is still selected.
+            if (this.tooltip.selectedEdge === $event.edges[0]) {
+              return;
+            }
+            this.papers = papers
+              .filter(p => !!p.title) // Only show those with a title
+              .sort((p1, p2) => { // Show the recent publications above
+                if (!p1.year) {
+                  return 1;
+                }
+                if (!p2.year) {
+                  return -1;
+                }
+                return p2.year - p1.year;
+              })
+              .slice(0, 20); // Limit the number (in the future, we could add pagination)
+          });
       }
 
       const pos = $event.event.center;
@@ -249,5 +273,13 @@ export class NetworkComponent implements AfterViewInit {
       nodes: new DataSet<Node>(visNodes),
       edges: new DataSet<Edge>(visEdges)
     };
+  }
+
+
+  private async fetchPapers(edge: NetworkEdge): Promise<Paper[]> {
+    if (!edge.references || edge.references.length === 0) { // This should never be the case but who knows...
+      return [];
+    }
+    return this.networkService.getPapers(edge.references.slice(0, -1).split(',').map(s => parseInt(s, 10)));
   }
 }

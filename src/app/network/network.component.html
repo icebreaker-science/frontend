@@ -16,10 +16,24 @@
       (selectItem)="addKeyword($event, keywordInput)"
     />
 
-    <div>
+    <div class="selected-nodes">
       <div *ngFor="let n of selectedNodes">
         {{ n }}
         <button (click)="removeKeyword(n)">x</button>
+      </div>
+    </div>
+
+    <div *ngIf="papers" class="reference-list">
+      <div class="reference-list__edge-name">
+        {{ tooltip.selectedEdge.node1 }} - {{ tooltip.selectedEdge.node2 }}
+      </div>
+      <div *ngFor="let p of papers" class="reference-list__paper">
+        <div class="reference-list__paper__header">
+          {{ p.title }} <ng-container *ngIf="p.year">({{ p.year }})</ng-container>
+        </div>
+        <div *ngIf="p.doi" class="reference-list__paper__doi">
+          DOI: <a href="https://dx.doi.org/{{ p.doi }}" target="_blank">{{ p.doi }}</a>
+        </div>
       </div>
     </div>
   </div>
