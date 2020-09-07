@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build-prod": "ng build --configuration=production",
+    "build": "ng build --crossOrigin=anonymous",
+    "build-prod": "ng build --configuration=production --crossOrigin=anonymous",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
