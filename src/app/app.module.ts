@@ -16,6 +16,7 @@ import { DeviceSearchComponent } from './device-search/device-search.component';
 import { DeviceCreationComponent } from './device-creation/device-creation.component';
 import { NetworkComponent } from './network/network.component';
 import { WikiComponent } from './wiki/wiki.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { WikiComponent } from './wiki/wiki.component';
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    NgxPaginationModule,
   ],
   providers: [
     {

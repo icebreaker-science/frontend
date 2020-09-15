@@ -1,9 +1,27 @@
-<p>
-  A list of all devices:
-</p>
-
-<ul>
-  <li *ngFor="let d of devices$ | async">
-    {{ d.title }} ({{ d.id }}): {{ d.description }}
-  </li>
-</ul>
+<div id="main">
+  <div class="container-fluid content">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <h2 class="text-center">Devices</h2>
+      </div>
+    </div>
+      <div class="row justify-content-center">
+        <div class="device-container col-lg-10">
+          <div class="device-element" *ngFor="let d of devices$ | async | paginate: config;">
+            <div class="device-element-img">
+              <div class="device-element-img-inner"></div>
+            </div>
+            <div class="device-element-content">
+              <h4 class="device-element-headline">{{ d.title }}</h4>
+              <p class="device-element-desc">{{ d.description.slice(0,100) + '...' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <pagination-controls id="device_pagination"
+                             (pageChange)="onPageChange($event)"
+        ></pagination-controls>
+      </div>
+  </div>
+</div>
