@@ -1,0 +1,23 @@
+.contact-form {
+  position: fixed;
+  z-index: 11;
+  top: -60px;
+  min-height: calc(100% + 60px);
+  width: 100%;
+  padding-top: 60px;
+
+  &-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  &-content {
+    margin: 20vh auto;
+
+
+  }
+}

@@ -1,1 +1,8 @@
+<app-contact-form
+  [avail]="contactAvail"
+  [hidden]="!contactForm"
+  (hide)="closeContactFormDummy();"
+>
+</app-contact-form>
 <p>wiki works!</p>
+<a (click)="openContactFormDummy(dummyAvail)">Open Contact Form Dummy</a>

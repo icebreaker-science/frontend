@@ -21,6 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { StringFilterPipe } from './string-filter.pipe';
 import { WikiPageComponent } from './wiki-page/wiki-page.component';
 import { WikiPageDeviceComponent } from './wiki-page/wiki-page-device/wiki-page-device.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { WikiPageDeviceComponent } from './wiki-page/wiki-page-device/wiki-page-
     StringFilterPipe,
     WikiPageComponent,
     WikiPageDeviceComponent,
+    ContactFormComponent,
   ],
   imports: [
     BrowserModule,
