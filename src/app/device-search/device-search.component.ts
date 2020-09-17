@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { WikiService } from '../wiki.service';
-import {WikiPage} from '../_types/WikiPage';
 import { PaginationInstance } from 'ngx-pagination';
 
 
@@ -20,6 +19,7 @@ export class DeviceSearchComponent implements OnInit {
     itemsPerPage: 12,
     currentPage: 1
   };
+  public filter = '';
 
   constructor(
     private wikiService: WikiService,
@@ -30,8 +30,12 @@ export class DeviceSearchComponent implements OnInit {
     this.wikiService.loadDevices();
   }
 
-  onPageChange(nmbr) {
+  onPageChange(nmbr): void {
     this.config.currentPage = nmbr;
+  }
+
+  onFilterChange(): void {
+    this.config.currentPage = 1;
   }
 
 }

@@ -17,6 +17,7 @@ import { DeviceCreationComponent } from './device-creation/device-creation.compo
 import { NetworkComponent } from './network/network.component';
 import { WikiComponent } from './wiki/wiki.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { StringFilterPipe } from './string-filter.pipe';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DeviceCreationComponent,
     NetworkComponent,
     WikiComponent,
+    StringFilterPipe,
   ],
   imports: [
     BrowserModule,
