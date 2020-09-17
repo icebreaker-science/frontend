@@ -5,9 +5,17 @@
         <h2 class="text-center">Devices</h2>
       </div>
     </div>
+    <div class="row justify-content-center">
+      <div class="filter-container col-10">
+        <div class="filter-container-inner">
+          <label for="filter">Filter: </label>
+          <input type="text" class="form-control input-form" id="filter" name="filter" [(ngModel)]="filter" (input)="onFilterChange()">
+        </div>
+      </div>
+    </div>
       <div class="row justify-content-center">
         <div class="device-container col-lg-10">
-          <div class="device-element" *ngFor="let d of devices$ | async | paginate: config;">
+          <div class="device-element" *ngFor="let d of devices$ | async | stringFilter: filter | paginate: config;">
             <div class="device-element-img">
               <div class="device-element-img-inner"></div>
             </div>
@@ -25,3 +33,4 @@
       </div>
   </div>
 </div>
+

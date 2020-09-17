@@ -1,5 +1,12 @@
 @import "../../scss/helper/variables";
 
+.filter-container {
+  &-inner {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+}
+
 .device-container {
   display: flex;
   flex-wrap: wrap;
