@@ -1,0 +1,20 @@
+<div class="jumbotron text-center">
+    <p *ngIf="deviceAvailabilities && deviceAvailabilities.length === 0" class="h4 mb-4">
+        This device is currently not offered by any institution
+    </p>
+    <p *ngIf="!deviceAvailabilities || deviceAvailabilities.length > 0" class="h4 mb-4">
+        This device is offered by the following institutions
+    </p>
+    <carousel [noPause]="false" [isAnimated]="true">
+        <slide *ngFor="let availability of deviceAvailabilities">
+            <div class="text-center py-5 text-dark">
+                <img src="" onerror="this.onerror=null; this.src='assets/img/logo.png'" class="img-thumbnail" alt="">
+                <div class="lead">
+                    <h3>{{ availability.institution }}</h3>
+                    <p>{{ availability.comment }}</p>
+                    <button type="button" class="btn btn-primary" (click)="openContactForm(availability)">Contact</button>
+                </div>
+            </div>
+        </slide>
+      </carousel>
+</div>

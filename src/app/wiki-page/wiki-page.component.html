@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="jumbotron" *ngIf="wikiPage">
+        <form class="text-center border border-light p-5">
+            <p class="h4 mb-4 font-weight-bold">{{ wikiPage.title }}</p>
+            <div class="col-auto">
+                <label for="ID" class="font-weight-bold">ID</label>
+                <p>{{ wikiPage.id }}</p>
+            </div>
+            <div class="col-auto">
+                <label for="Type" class="font-weight-bold">Type</label>
+                <p>{{ wikiPage.type }}</p>
+            </div>
+            <div class="col-auto">
+                <label for="Title" class="font-weight-bold">Title</label>
+                <p>{{ wikiPage.title }}</p>
+            </div>
+            <div class="col-auto">
+                <label for="Description" class="font-weight-bold">Description</label>
+                <p>{{ wikiPage.description }}</p>
+            </div>
+            <div class="col-auto">
+                <label for="References" class="font-weight-bold ">References</label>
+                <p>{{ wikiPage.references }}</p>
+            </div>
+        </form>
+    </div>
+    <div [ngSwitch]="wikiPage?.type">
+        <app-wiki-page-device *ngSwitchCase="'device'" [wikiPage]="wikiPage"></app-wiki-page-device>
+    </div>
+</div>

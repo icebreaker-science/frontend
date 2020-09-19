@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BackendService } from './backend.service';
 import { copyWikiPage, WikiPage } from './_types/WikiPage';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {Availability} from './_types/Availability';
 
 
@@ -27,6 +27,27 @@ export class WikiService {
   ) {
   }
 
+  getDeviceAvailability(opts): Observable<Availability[]> {
+    let params = new HttpParams();
+    if (opts.deviceId) {
+      params = params.append('device', opts.deviceId);
+    }
+    if (opts.ownerId) {
+      params = params.append('ownerId', opts.ownerId);
+    }
+
+    return this.http.get<Availability[]>(
+      `${this.backendService.url}/device-availability/`,
+      { params }
+    );
+  }
+
+  getWikiPage(id): Observable<WikiPage> {
+    return this.http.get<WikiPage>(
+      `${this.backendService.url}/wiki/${id}`,
+      {}
+    );
+  }
 
   loadDevices(): Promise<void> {
     return new Promise<void>((resolve, reject) => {

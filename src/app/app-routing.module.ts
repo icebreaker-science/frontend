@@ -7,6 +7,7 @@ import { DeviceSearchComponent } from './device-search/device-search.component';
 import { DeviceCreationComponent } from './device-creation/device-creation.component';
 import { NetworkComponent } from './network/network.component';
 import { WikiComponent } from './wiki/wiki.component';
+import { WikiPageComponent } from './wiki-page/wiki-page.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'device-creation', component: DeviceCreationComponent },
   { path: 'network', component: NetworkComponent },
   { path: 'wiki', component: WikiComponent },
+  { path: 'wiki-page', component: WikiPageComponent}
 ];
 
 @NgModule({
