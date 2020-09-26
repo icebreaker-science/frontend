@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'device-creation', component: DeviceCreationComponent },
   { path: 'network', component: NetworkComponent },
   { path: 'wiki', component: WikiComponent },
-  { path: 'wiki-page', component: WikiPageComponent}
+  { path: 'wiki-page/:id', component: WikiPageComponent}
 ];
 
 @NgModule({

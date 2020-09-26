@@ -21,13 +21,15 @@ export class WikiPageComponent implements OnInit {
   }
 
   getWikiPage() {
-    const wikiID = this.route.snapshot.queryParams.id;
-    this.wikiService.getWikiPage(wikiID).subscribe(
-      (wikiPage: WikiPage) => {
-        this.wikiPage = wikiPage;
-      },
-      (err) => console.error(err) // TODO: display not found
-    );
+    this.route.params.subscribe(params => {
+      const wikiID = params.id;
+      this.wikiService.getWikiPage(wikiID).subscribe(
+        (wikiPage: WikiPage) => {
+          this.wikiPage = wikiPage;
+        },
+        (err) => console.error(err) // TODO: display not found
+      );
+    });
   }
 
 }
