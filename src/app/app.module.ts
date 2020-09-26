@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { TokenInterceptor } from './token.interceptor';
 import { DeviceSearchComponent } from './device-search/device-search.component';
 import { DeviceCreationComponent } from './device-creation/device-creation.component';
@@ -18,6 +19,8 @@ import { NetworkComponent } from './network/network.component';
 import { WikiComponent } from './wiki/wiki.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { StringFilterPipe } from './string-filter.pipe';
+import { WikiPageComponent } from './wiki-page/wiki-page.component';
+import { WikiPageDeviceComponent } from './wiki-page/wiki-page-device/wiki-page-device.component';
 
 
 @NgModule({
@@ -33,6 +36,8 @@ import { StringFilterPipe } from './string-filter.pipe';
     NetworkComponent,
     WikiComponent,
     StringFilterPipe,
+    WikiPageComponent,
+    WikiPageDeviceComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +46,7 @@ import { StringFilterPipe } from './string-filter.pipe';
     NgbModule,
     FormsModule,
     NgxPaginationModule,
+    CarouselModule.forRoot()
   ],
   providers: [
     {

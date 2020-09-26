@@ -22,6 +22,9 @@
             <div class="device-element-content">
               <h4 class="device-element-headline">{{ d.title }}</h4>
               <p class="device-element-desc">{{ d.description.slice(0,100) + '...' }}</p>
+              <a [routerLink]="['/wiki-page', d.id]">
+                <button class="btn btn-info">More</button>
+              </a>
             </div>
           </div>
         </div>

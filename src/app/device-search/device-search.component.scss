@@ -39,6 +39,9 @@
       overflow: hidden;
       border: 1px solid $lightgrey;
       border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
     }
 
     &-headline {
