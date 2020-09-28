@@ -8,30 +8,9 @@ import {Availability} from '../_types/Availability';
 })
 export class WikiComponent implements OnInit {
 
-  contactForm = false;
-  contactAvail: Availability;
-  dummyAvail: Availability;
-
-  constructor() {
-    this.dummyAvail = {
-      deviceId: 1,
-      comment: 'This is device is super awesome!', /* ? */
-      germanPostalCode: '22523',
-      institution: 'Super fun institue',
-      researchGroup: 'Group of Research', /* ? */
-    };
-  }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  openContactFormDummy(avail: Availability): void {
-    this.contactAvail = avail;
-    this.contactForm = true;
-  }
-
-  closeContactFormDummy(): void {
-    this.contactForm = false;
   }
 
 }

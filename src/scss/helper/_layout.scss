@@ -86,3 +86,10 @@ h2 {
     text-align: center;
   }
 }
+
+.close-btn {
+  display: block;
+  height: 30px;
+  width: 30px;
+  background: url(../../assets/img/close-button.svg) center/20px 20px no-repeat;
+}

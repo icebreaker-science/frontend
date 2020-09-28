@@ -1,3 +1,9 @@
+<app-contact-form
+  [availability]="contactAvailability"
+  [hidden]="!contactForm"
+  (hide)="closeContactForm();"
+>
+</app-contact-form>
 <div class="jumbotron text-center">
     <p *ngIf="deviceAvailabilities && deviceAvailabilities.length === 0" class="h4 mb-4">
         This device is currently not offered by any institution
