@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   password: string;
   wrongCredentials: boolean;
   newRegistered: boolean;
+  notLoggedIn: boolean;
 
   constructor(
     private accountService: AccountService,
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.newRegistered = params.registered;
+      this.notLoggedIn = params.notLoggedIn;
     });
   }
 
