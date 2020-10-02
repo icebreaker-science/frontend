@@ -2,6 +2,7 @@
   [availability]="contactAvailability"
   [hidden]="!contactForm"
   (hide)="closeContactForm();"
+  (msgSent)="sendContactForm();"
 >
 </app-contact-form>
 <div class="jumbotron text-center">
@@ -11,6 +12,10 @@
     <p *ngIf="!deviceAvailabilities || deviceAvailabilities.length > 0" class="h4 mb-4">
         This device is offered by the following institutions
     </p>
+
+    <div *ngIf="this.infoMessage" class="info-container">
+      <span>{{ infoMessage }}</span>
+    </div>
     <carousel [noPause]="false" [isAnimated]="true">
         <slide *ngFor="let availability of deviceAvailabilities">
             <div class="text-center py-5 text-dark">

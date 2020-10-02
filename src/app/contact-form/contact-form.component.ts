@@ -12,12 +12,14 @@ export class ContactFormComponent implements OnInit {
 
   @Input() availability: Availability;
   @Output() hide: EventEmitter<void> = new EventEmitter<void>();
+  @Output() msgSent: EventEmitter<void> = new EventEmitter<void>();
 
   requestData = {
     name: '',
     email: '',
     message: '',
   };
+  emailError = '';
 
   constructor(
     private backendService: BackendService,
@@ -36,7 +38,8 @@ export class ContactFormComponent implements OnInit {
       `/device-availability/${this.availability.deviceId}/contact`,
       { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
       .subscribe(
-        () => this.hide.emit(),
+        () => this.msgSent.emit(),
+        (err) => this.emailError = err.error.message,
       );
   }
 }

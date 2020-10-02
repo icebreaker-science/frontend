@@ -37,6 +37,9 @@
               </form>
             </div>
           </div>
+          <div class="error-container" [hidden]="!this.emailError">
+            <span class="error-container-text">{{ emailError }}</span>
+          </div>
         </div>
       </div>
     </div>

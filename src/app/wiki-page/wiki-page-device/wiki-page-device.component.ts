@@ -14,6 +14,7 @@ export class WikiPageDeviceComponent implements OnInit {
   deviceAvailabilities: Availability[];
   contactForm = false;
   contactAvailability: Availability;
+  infoMessage = '';
 
   constructor(
     private wikiService: WikiService
@@ -43,5 +44,10 @@ export class WikiPageDeviceComponent implements OnInit {
 
   closeContactForm(): void {
     this.contactForm = false;
+  }
+
+  sendContactForm(): void {
+    this.contactForm = false;
+    this.infoMessage = 'Message has been sent to device owner!';
   }
 }
