@@ -3,17 +3,23 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { environment } from '../environments/environment';
+import { AccountService } from './account.service';
+import { tap } from 'rxjs/operators';
+import { Router} from '@angular/router';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
   url = environment.backendUrl;
 
-  constructor() {}
+  constructor(
+    private accountService: AccountService,
+    private router: Router
+  ) {}
 
   intercept(req: HttpRequest<any>,
             next: HttpHandler): Observable<HttpEvent<any>> {
@@ -25,7 +31,17 @@ export class TokenInterceptor implements HttpInterceptor {
           `Bearer ${userToken}`)
       });
 
-      return next.handle(cloned);
+      return next.handle(cloned).pipe( tap(() => {},
+            // check Token Validity
+            (err: any) => {
+              if (err instanceof HttpErrorResponse) {
+                if (err.status !== 401) {
+                  return;
+                }
+                this.accountService.logout();
+                this.router.navigateByUrl('/login?notLoggedIn=true');
+              }
+            }));
     }
     else {
       return next.handle(req);
