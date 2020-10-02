@@ -33,7 +33,7 @@ export class ContactFormComponent implements OnInit {
   send(): void {
     this.backendService.post(
       this.requestData,
-      `/device_availability/${this.availability.deviceId}/contact`,
+      `/device-availability/${this.availability.deviceId}/contact`,
       { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
       .subscribe(
         () => this.hide.emit(),
