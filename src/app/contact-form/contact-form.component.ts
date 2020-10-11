@@ -38,7 +38,14 @@ export class ContactFormComponent implements OnInit {
       `/device-availability/${this.availability.deviceId}/contact`,
       { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
       .subscribe(
-        () => this.msgSent.emit(),
+        () => {
+          this.requestData = {
+            name: '',
+            email: '',
+            message: '',
+          };
+          this.msgSent.emit();
+        },
         (err) => this.emailError = err.error.message,
       );
   }
