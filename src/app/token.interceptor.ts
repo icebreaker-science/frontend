@@ -26,22 +26,17 @@ export class TokenInterceptor implements HttpInterceptor {
 
     const userToken = localStorage.getItem('userToken');
     if (req.url.indexOf(this.url) > -1 && userToken) {
+      if (!this.accountService.isLoginValid()) {
+        this.accountService.logout();
+        this.router.navigateByUrl('/login?notLoggedIn=true');
+        return EMPTY;
+      }
       const cloned = req.clone({
         headers: req.headers.set('Authorization',
           `Bearer ${userToken}`)
       });
 
-      return next.handle(cloned).pipe( tap(() => {},
-            // check Token Validity
-            (err: any) => {
-              if (err instanceof HttpErrorResponse) {
-                if (err.status !== 401) {
-                  return;
-                }
-                this.accountService.logout();
-                this.router.navigateByUrl('/login?notLoggedIn=true');
-              }
-            }));
+      return next.handle(cloned);
     }
     else {
       return next.handle(req);
