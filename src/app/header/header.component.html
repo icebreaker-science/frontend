@@ -1,7 +1,7 @@
 <nav id="header" class="header" [ngClass]="{'open' : navOpen}">
   <div class="header-bar">
     <a class="header-logo" routerLink="/">
-      <img alt="Logo" src="/assets/img/icebreaker.png" height="44" width="240">
+      <img alt="Logo" src="/assets/img/logo.png">
     </a>
     <a class="header-toggle" (click)="toggleNav()">
       <span class="header-toggle-first"></span>
@@ -12,11 +12,11 @@
   <div class="header-inner">
     <div class="header-nav">
       <ul class="header-list">
-        <li class="header-list-item">
-          <a class="header-link" routerLink="/network">Network</a>
+        <li class="header-list-item home">
+          <a class="header-link" routerLink="/">Home</a>
         </li>
         <li class="header-list-item">
-          <a class="header-link" routerLink="/wiki">Wiki</a>
+          <a class="header-link" routerLink="/network">Network</a>
         </li>
         <li class="header-list-item">
           <a class="header-link" routerLink="/device-search">Search Devices</a>
