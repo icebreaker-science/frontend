@@ -87,10 +87,9 @@ export class AccountService {
 
   isLoginValid() {
     return (
-      localStorage.getItem('username') &&
       localStorage.getItem('userToken') &&
       localStorage.getItem('expiresAt') &&
-      Date.now() < parseInt(localStorage.getItem('expiresAt'), 10)
+      Date.now() / 1000 < parseInt(localStorage.getItem('expiresAt'), 10)
     );
   }
 
