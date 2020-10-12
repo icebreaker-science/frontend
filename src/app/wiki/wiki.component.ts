@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Availability} from '../_types/Availability';
 
 @Component({
   selector: 'app-wiki',

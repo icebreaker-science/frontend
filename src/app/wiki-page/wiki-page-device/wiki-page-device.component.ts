@@ -12,10 +12,21 @@ export class WikiPageDeviceComponent implements OnInit {
   @Input()
   wikiPage: WikiPage;
   deviceAvailabilities: Availability[];
+  contactForm = false;
+  contactAvailability: Availability;
+  infoMessage = '';
 
   constructor(
     private wikiService: WikiService
-  ) { }
+  ) {
+    this.contactAvailability = {
+      deviceId: 0,
+      comment: '',
+      germanPostalCode: '',
+      institution: '',
+      researchGroup: '',
+    };
+  }
 
   ngOnInit(): void {
     this.wikiService.getDeviceAvailability({
@@ -26,7 +37,17 @@ export class WikiPageDeviceComponent implements OnInit {
     );
   }
 
-  openContactForm(availability) {
-    console.log(availability);
+  openContactForm(availability): void {
+    this.contactAvailability = availability;
+    this.contactForm = true;
+  }
+
+  closeContactForm(): void {
+    this.contactForm = false;
+  }
+
+  sendContactForm(): void {
+    this.contactForm = false;
+    this.infoMessage = 'Message has been sent to device owner!';
   }
 }

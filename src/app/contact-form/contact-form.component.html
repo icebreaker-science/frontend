@@ -1,0 +1,47 @@
+<div class="contact-form">
+  <div class="contact-form-overlay"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 contact-form-content">
+        <a class="close-btn" (click)="close()"></a>
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <h3 class="text-center">Contact the owner</h3>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-lg-12">
+            <p *ngIf="availability.researchGroup; else elseResearch">This device is available at the {{ availability.researchGroup }} of the {{ availability.institution }}</p>
+            <ng-template #elseResearch>
+              <p>This device is available at the {{ availability.institution }}</p>
+            </ng-template>
+          </div>
+          <div class="w-100"></div>
+          <div *ngIf="availability.comment;" class="col-lg-12">
+            <h4>Comment</h4>
+            <p>{{ availability.comment }}</p>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-lg-12">
+            <h4>Contact</h4>
+            <div class="row justify-content-center">
+              <form class="col-md-10 form-group" (ngSubmit)="send()" #contactForm="ngForm">
+                <label for="name">Name</label>
+                <input type="text" class="form-control input-form" id="name" name="name" required [(ngModel)]="requestData.name">
+                <label for="email">Email</label>
+                <input type="email" class="form-control input-form" id="email" name="email" required [(ngModel)]="requestData.email">
+                <label for="message">Message</label>
+                <textarea type="text" class="form-control input-form" id="message" name="message" required [(ngModel)]="requestData.message"></textarea>
+                <div class="button-wrapper">
+                  <button class="button" type="submit" [disabled]="!contactForm.form.valid">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="error-container" [hidden]="!this.emailError">
+            <span class="error-container-text">{{ emailError }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
