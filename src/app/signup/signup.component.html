@@ -23,9 +23,14 @@
                 This field is required.
               </div>
               <label for="email">Email *</label>
-              <input type="email" class="form-control input-form" id="email" name="email" required #mail="ngModel" [(ngModel)]="user.account.email">
-              <div [hidden]="mail.valid || mail.untouched" class="form-alert">
-                This field is required.
+              <input type="email" class="form-control input-form" id="email" name="email" required email #mail="ngModel" [(ngModel)]="user.account.email">
+              <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="form-alert">
+                <div *ngIf="mail.errors.required">
+                  This field is required.
+                </div>
+                <div *ngIf="mail.errors.email">
+                  Please enter a valid email.
+                </div>
               </div>
               <label for="password">Password *</label>
               <input type="password" class="form-control input-form" id="password" name="password" required #pw="ngModel" [(ngModel)]="user.account.password">
@@ -44,8 +49,10 @@
               </div>
               <label for="researchArea">Research Area</label>
               <input type="text" class="form-control input-form" id="researchArea" name="researchArea" [(ngModel)]="user.profile.researchArea">
-              <div class="error-container" [hidden]="!this.wrongCredentials">
-                <span class="error-container-text">Something went wrong...</span>
+              <div class="error-container" [hidden]="!this.errors">
+                <div *ngFor="let error of this.errors">
+                  <span class="error-container-text">{{error}}</span>
+                </div>
               </div>
               <div class="button-wrapper">
                 <button class="button" type="submit" [disabled]="!registerForm.form.valid">Register</button>

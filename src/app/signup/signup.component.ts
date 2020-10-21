@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   user: User;
-  wrongCredentials: boolean;
+  errors: string[];
 
   constructor(
     private accountService: AccountService,
@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
         researchArea: '',
       }
     };
-    this.wrongCredentials = false;
+    this.errors = null;
   }
 
   ngOnInit(): void {
@@ -40,7 +40,13 @@ export class SignupComponent implements OnInit {
     this.accountService.register(this.user)
       .subscribe(
         () => this.router.navigateByUrl('/login?registered=true'),
-        () => this.wrongCredentials = true,
+        (error) => {
+          if (error.error.errors) {
+            this.errors =  error.error.errors;
+          } else {
+            this.errors = [error.error.error];
+          }
+        },
       );
   }
 }
