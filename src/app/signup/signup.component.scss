@@ -1,0 +1,65 @@
+@import "../../scss/helper/variables";
+
+.signup {
+  min-height: calc(100vh - 140px);
+  background-color: $lightgreen;
+
+  &-box {
+    margin-top: 75px;
+
+    .form-group {
+      margin-top: 35px;
+    }
+  }
+
+  &-img {
+    text-align: center;
+
+    &-hl {
+      text-align: left;
+      color: $grey;
+      margin-bottom: 35px;
+    }
+
+    &-big {
+      max-width: 100%;
+    }
+  }
+
+  .form-alert {
+    position: absolute;
+  }
+
+  @media (max-width: 991px) {
+    &-box {
+      .form-group {
+        margin-top: 0;
+      }
+    }
+
+    &-img {
+      &-big {
+        position: absolute;
+        left: 50%;
+        margin-left: -234px;
+        margin-top: 20px;
+      }
+    }
+  }
+
+  @media (max-width: 575px) {
+    &-img {
+      &-big {
+        width: 80%;
+        left: 10%;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+#title {
+  display: block;
+  width: 30%;
+}
+

@@ -85,7 +85,7 @@
   @media (max-width: 1199px) {
     .login {
       &-img {
-        img {
+        &-big {
           margin-top: 155px;
           width: 150%;
           margin-left: -40px;
@@ -121,7 +121,7 @@
       &-img {
         margin: 0 0 -35px 0;
 
-        img {
+        &-big {
           width: 300px;
           margin: 50px 0 0 0;
           left: 35%;
