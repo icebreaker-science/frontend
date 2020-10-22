@@ -1,0 +1,164 @@
+@import "../../scss/helper/variables";
+
+.login {
+  min-height: calc(100vh - 140px);
+  background-color: $lightgreen;
+  overflow: hidden;
+
+  &-outerbox {
+    z-index: 1;
+  }
+
+  &-box {
+    background-color: $loginBlue;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    border-radius: 65px;
+    padding: 50px 50px 100px;
+    text-align: center;
+
+    .input-form {
+      margin: 25px 0 0;
+    }
+
+    &-forgot {
+      text-align: right;
+      margin-top: 5px;
+
+      a {
+        font-size: 0.85rem;
+      }
+    }
+
+    &-check {
+      margin-top: 20px;
+      font-size: 0.85rem;
+
+      label {
+        margin-left: 17px;
+      }
+
+      input {
+        position: absolute;
+        margin-top: 3px;
+      }
+    }
+  }
+
+  &-img {
+    position: relative;
+    margin-left: -30px;
+
+    &-bubble {
+      position: absolute;
+      background:  url("/assets/img/speechbubble.png") center center/100%;
+      width: 375px;
+      height: 224px;
+      color: $grey;
+      text-align: center;
+      padding: 24px 55px 55px;
+      right: 35px;
+      top: 20px;
+
+      &-inner {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      h2 {
+        margin: 0 0 0.5rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+    }
+
+    &-big {
+      margin-top: 190px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    .login {
+      &-img {
+        img {
+          margin-top: 155px;
+          width: 150%;
+          margin-left: -40px;
+        }
+
+        &-bubble {
+          width: 250px;
+          height: 149px;
+          padding: 16px 40px 37px;
+          right: -45px;
+          top: 35px;
+
+          &-inner {
+            h2 {
+              margin: 0 0 0.25rem;
+              font-size: 1.5rem;
+            }
+
+            p {
+              font-size: 1rem;
+              line-height: 1.35rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 991px) {
+    .login {
+      &-box {
+        margin-top: 0;
+      }
+      &-img {
+        margin: 0 0 -35px 0;
+
+        img {
+          width: 300px;
+          margin: 50px 0 0 0;
+          left: 35%;
+          position: relative;
+        }
+
+        &-bubble {
+          background-image: url("/assets/img/speechbubble_mirrored.png");
+          width: 250px;
+          height: 149px;
+          padding: 16px 40px 37px;
+          right: auto;
+          left: 50px;
+          top: 10px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .login {
+      &-box {
+        margin-top: 50px;
+      }
+      &-img {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 575px) {
+    .login {
+      &-box {
+        margin: 50px -15px;
+        border-radius: 0;
+        padding: 25px 25px 75px;
+      }
+    }
+  }
+}
