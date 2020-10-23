@@ -1,20 +1,124 @@
 @import "../../scss/helper/variables";
 
 .home {
-  .big-picture {
-    height: 500px;
-    background-image: url("https://via.placeholder.com/1920x500");
-    background-size: cover;
-    background-position: center;
-  }
-  .content {
-    margin-top: -50px;
-    padding-top: 75px;
-    padding-bottom: 50px;
-    background-color: $white;
+  margin-top: 50px;
+  color: $grey;
 
-    .welcome-box {
+  .welcome {
+    margin-bottom: 2rem;
+
+    &-text {
+      margin-top: 60px;
+      &-hl {
+        max-width: 625px;
+      }
+
+      &-desc {
+        float: left;
+        max-width: 625px;
+        margin-right: 40px;
+      }
+
+      &-button {
+        color: $white;
+      }
+    }
+
+    &-img {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .overview {
+    background-color: $lightgreen;
+    padding: 4rem 0 1.5rem;
+    margin-bottom: 3rem;
+
+    &-container {
+      min-height: 95px;
+      margin-bottom: 2.5rem;
+      align-items: center;
+
+      &-desc {
+        margin: 0;
+      }
+    }
+  }
+
+  @media (max-width: 1440px) {
+    .welcome {
+      &-text {
+        margin-top: 0;
+      }
+    }
+  }
+
+  @media (max-width: 991px) {
+    margin-top: 25px;
+
+    .welcome {
+      &-row {
+        display: flex;
+      }
+
+      &-text {
+        &-hl {
+          max-width: 100%;
+        }
+
+        &-desc {
+          max-width: 100%;
+        }
+      }
+
+      &-img {
+        display: flex;
+        align-items: center;
+      }
+    }
+    .overview {
+      &-container {
+        &-img {
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .welcome {
+      &-img {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 575px) {
+    .welcome {
       text-align: center;
+
+      &-text {
+        &-desc {
+          margin-right: 0;
+        }
+      }
+    }
+    .overview {
+      &-container {
+        text-align: center;
+
+        &-img {
+          margin-bottom: 1rem;
+
+          img {
+            width: auto;
+          }
+        }
+      }
     }
   }
 }

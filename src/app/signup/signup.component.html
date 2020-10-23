@@ -1,29 +1,26 @@
-<div id="main">
+<div id="main" class="signup">
   <div class="container content">
     <div class="row">
       <div class="col-lg-12">
         <div class="signup-box">
-          <div class="row justify-content-center">
-            <div class="col-lg-12">
-              <h2 class="text-center">Register for Icebreaker</h2>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="signup-img">
+                <h1 class="signup-img-hl">Join icebreaker.science and be part of chemical bonding</h1>
+                <img class="signup-img-big" src="assets/img/welcome_img.png">
+              </div>
             </div>
-          </div>
-          <div class="row justify-content-center">
-            <form class="form-group col-lg-6 col-md-8" (ngSubmit)="newUser()" #registerForm="ngForm">
-              <label for="title">Titel</label>
-              <input type="text" class="form-control input-form" id="title" name="title" [(ngModel)]="user.profile.title">
-              <label for="firstname">First name *</label>
-              <input type="text" class="form-control input-form" id="firstname" name="firstname" required #firstname="ngModel" [(ngModel)]="user.profile.forename">
+            <form class="form-group col-lg-6" (ngSubmit)="newUser()" #registerForm="ngForm">
+              <input type="text" placeholder="Title" class="form-control input-form half" id="title" name="title" [(ngModel)]="user.profile.title">
+              <input type="text" placeholder="First Name *" class="form-control input-form half" id="firstname" name="firstname" required #firstname="ngModel" [(ngModel)]="user.profile.forename">
               <div [hidden]="firstname.valid || firstname.untouched" class="form-alert">
                 This field is required.
               </div>
-              <label for="lastname">Last name *</label>
-              <input type="text" class="form-control input-form" id="lastname" name="lastname" required #lastname="ngModel" [(ngModel)]="user.profile.surname">
-              <div [hidden]="lastname.valid || lastname.untouched" class="form-alert">
+              <input type="text" placeholder="Last name *" class="form-control input-form half last" id="lastname" name="lastname" required #lastname="ngModel" [(ngModel)]="user.profile.surname">
+              <div [hidden]="lastname.valid || lastname.untouched" class="form-alert right">
                 This field is required.
               </div>
-              <label for="email">Email *</label>
-              <input type="email" class="form-control input-form" id="email" name="email" required email #mail="ngModel" [(ngModel)]="user.account.email">
+              <input type="email" placeholder="Email *" class="form-control input-form" id="email" name="email" required email #mail="ngModel" [(ngModel)]="user.account.email">
               <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="form-alert">
                 <div *ngIf="mail.errors.required">
                   This field is required.
@@ -32,23 +29,19 @@
                   Please enter a valid email.
                 </div>
               </div>
-              <label for="password">Password *</label>
-              <input type="password" class="form-control input-form" id="password" name="password" required #pw="ngModel" [(ngModel)]="user.account.password">
+              <input type="password" placeholder="Password *" class="form-control input-form" id="password" name="password" required #pw="ngModel" [(ngModel)]="user.account.password">
               <div [hidden]="pw.valid || pw.untouched" class="form-alert">
                 This field is required.
               </div>
-              <label for="institution">Institution *</label>
-              <input type="text" class="form-control input-form" id="institution" name="institution" required #inst="ngModel" [(ngModel)]="user.profile.institution">
+              <input type="text" placeholder="Institution *" class="form-control input-form half" id="institution" name="institution" required #inst="ngModel" [(ngModel)]="user.profile.institution">
               <div [hidden]="inst.valid || inst.untouched" class="form-alert">
                 This field is required.
               </div>
-              <label for="city">City *</label>
-              <input type="text" class="form-control input-form" id="city" name="city" required #metro="ngModel" [(ngModel)]="user.profile.city">
-              <div [hidden]="metro.valid || metro.untouched" class="form-alert">
+              <input type="text" placeholder="City *" class="form-control input-form half last" id="city" name="city" required #metro="ngModel" [(ngModel)]="user.profile.city">
+              <div [hidden]="metro.valid || metro.untouched" class="form-alert right">
                 This field is required.
               </div>
-              <label for="researchArea">Research Area</label>
-              <input type="text" class="form-control input-form" id="researchArea" name="researchArea" [(ngModel)]="user.profile.researchArea">
+              <input type="text" placeholder="Research Area" class="form-control input-form half" id="researchArea" name="researchArea" [(ngModel)]="user.profile.researchArea">
               <div class="error-container" [hidden]="!this.errors">
                 <div *ngFor="let error of this.errors">
                   <span class="error-container-text">{{error}}</span>

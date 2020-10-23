@@ -3,24 +3,23 @@
 .header {
   position: relative;
   z-index: 10;
-  background-color: $darkblue;
-  padding: 0.5rem;
-  height: 60px;
+  background-color: $white;
+  height: 182px;
 
   a {
-    color: $white;
+    color: $grey;
     text-decoration: none;
   }
 
   span {
-    color: $white;
+    color: $grey;
   }
 
   &-inner {
-    background-color: $darkblue;
-    margin-left: 16rem;
+    background-color: $white;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    padding: 100px 60px 0 0;
   }
 
   &-logo {
@@ -30,53 +29,125 @@
 
   &-list {
     list-style: none;
-    padding: 6px 0;
     margin: 0;
     display: flex;
 
     &-item {
-      font-size: 1rem;
-      line-height: 2rem;
-      margin-right: 1rem;
-
-      transition: border 0.3s ease-out;
-
-      &:hover {
-        border-bottom: 1px solid $white;
-      }
+      font-size: 1.25rem;
+      margin-right: 60px;
 
       a {
+        padding-top: 10px;
         display: inline-block;
+      }
+
+      &.home a{
+        padding-left: 80px;
+        background: url("/assets/img/home.png") left center no-repeat;
       }
     }
   }
 
   &-profile {
+    margin-left: 60px;
 
     &-username {
-      font-size: 1rem;
-      line-height: 2.75rem;
-      padding-right: 0.5rem;
+      position: absolute;
+      display: inline-block;
+      font-size: 1.25rem;
+      top: 15px;
+      right: 15px;
+      border-left: 2px solid $blue;
+      border-bottom: 2px solid $blue;
+      padding: 0 8px 4px;
+      border-radius: 0 5px;
     }
 
     &-link {
       display: inline-block;
-      font-size: 1rem;
-      line-height: 2.75rem;
-      padding-right: 0.5rem;
+      padding: 10px 0 10px 65px;
+      font-size: 1.25rem;
+      background: url("/assets/img/log_in_out.png") left center no-repeat;
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .header {
+    height: 140px;
+
+    &-logo img {
+      margin-top: 10px;
+      height: 120px;
+    }
+
+    &-inner {
+      padding: 80px 40px 0 0;
+    }
+
+    &-list {
+      &-item {
+        font-size: 1rem;
+        margin-right: 40px;
+
+        a {
+          padding-top: 7px;
+        }
+
+        &.home a{
+          padding-left: 0;
+          background: none;
+        }
+      }
+    }
+
+    &-profile {
+      margin-left: 40px;
+
+      &-username {
+        font-size: 1rem;
+        top: 10px;
+        right: 10px;
+      }
+
+      &-link {
+        font-size: 1rem;
+        padding: 7px 0 7px 42px;
+        background-size: 32px auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .header {
+    &-logo {
+      overflow: hidden;
+      height: 80px;
+      top: -15px;
+    }
+
+    &-inner {
+      padding-right: 23px;
+      justify-content: space-between;
+    }
+
+    &-nav {
+      margin-left: 23px;
     }
   }
 }
 
 @media (max-width: 767px) {
   .header {
+    height: auto;
     padding: 0;
 
     &-bar {
-      background-color: $darkblue;
+      background-color: $white;
       position: relative;
       width: 100%;
-      height: 60px;
+      height: 105px;
       z-index: 1;
     }
 
@@ -89,7 +160,7 @@
         position: relative;
         right: 0;
         display: block;
-        background-color: $white;
+        background-color: $black;
         height: 2px;
         width: 30px;
         margin-bottom: 7px;
@@ -99,8 +170,13 @@
     }
 
     &-logo {
+      height: 120px;
       left: 50%;
-      margin: 0.5rem 0 0 -120px;
+      margin: 0 0 0 -150px;
+    }
+
+    &-nav {
+      margin: 0;
     }
 
     &-inner {
@@ -111,6 +187,7 @@
       opacity: 0;
       flex-direction: column;
       left: -100%;
+      padding: 45px 0 0;
 
       transition: top 0.3s ease-out, opacity 0.3s ease-out, left 0s ease .3s;
     }
@@ -131,19 +208,27 @@
     }
 
     &-profile {
-      padding-bottom: 1rem;
+      padding-top: 0.5rem;
+      text-align: center;
+      margin: 0.5rem 10%;
+      border-top: 1px solid $blue;
 
       &-username {
+        position: relative;
+        top: auto;
+        right: auto;
         text-align: center;
         display: block;
         padding: 0;
         line-height: 2.5rem;
+        border: none;
+        border-radius: 0;
       }
 
       &-link {
+        display: inline-block;
+        padding: 0 40px;
         text-align: center;
-        display: block;
-        padding: 0;
         line-height: 2.5rem;
       }
     }
