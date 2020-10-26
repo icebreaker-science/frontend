@@ -35,9 +35,10 @@ export class AccountService {
         )
       ).subscribe(
         res => {
+          this.setUserId(res);
           this.setUsername(res);
           observer.next(res);
-          },
+        },
         err => observer.error(err),
         );
     });
@@ -60,7 +61,15 @@ export class AccountService {
     const userName = localStorage.getItem('username');
     return userName ? userName : '';
   }
+  setUserId(res){
+    const userId = res.accountId;
+    localStorage.setItem('userId',userId);
 
+  }
+  getUserId(){
+    const userId = localStorage.getItem('userId');
+    return userId ? userId : {};
+  }
   setSession(token) {
     const decoded = this.parseJwt(token);
     localStorage.setItem('userToken', token);
