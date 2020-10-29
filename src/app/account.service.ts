@@ -3,7 +3,7 @@ import { BackendService } from './backend.service';
 import { Observable, Subject } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { map, switchMap } from 'rxjs/operators';
-import {User} from "./_types/User";
+import { UserProfile } from './_types/UserProfile';
 
 
 @Injectable({
@@ -38,16 +38,15 @@ export class AccountService {
         res => {
           this.setUserId(res);
           this.setUsername(res);
-          this.setUser(res);
           observer.next(res);
-        },
+          },
         err => observer.error(err),
         );
     });
   }
 
   getUserProfile() {
-    return this.backendService.get(
+    return this.backendService.get<UserProfile>(
       '/account/my-profile',
       {}
     );
@@ -70,14 +69,6 @@ export class AccountService {
   getUserId(){
     const userId = localStorage.getItem('userId');
     return userId ? userId : {};
-  }
-  setUser(res){
-    const user = res;
-    localStorage.setItem('user', user);
-  }
-  getUser(){
-    const user = localStorage.getItem('user');
-    return user ? user : {};
   }
   setSession(token) {
     const decoded = this.parseJwt(token);

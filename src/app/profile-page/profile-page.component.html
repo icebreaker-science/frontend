@@ -1,12 +1,16 @@
 <div id="main">
   <div class="container-fluid content">
     <div class="row justify-content-center">
-      <div class="col-lg-12">
-        <span class="text-left">Title:{{profile}}</span>
-<!--        <span class="text-left">Surname:{{user$.surname | json}}</span>-->
-<!--        <span class="text-left">{{user$.forename | json}}</span>-->
-<!--        <span class="text-left">{{user$.institution | json}}</span>-->
-<!--        <span class="text-left">{{user$.city | json}}</span>-->
+      <div class="row col-lg-8 border-top border-bottom p-2 justify-content-center">
+        <div class="col-6 align-self-center  ">
+          <span class=""> <p>{{profile.title + '.'}} {{profile.forename + ' ' + profile.surname}}</p></span>
+          <span class="text-left">Institution: <p> {{profile.institution }}</p></span>
+          <span class="text-left">City: <p>{{profile.city}}</p></span>
+          <span class="text-left">Research area: <p>{{profile.researchArea}}</p></span>
+
+        </div>
+
+
       </div>
       <div class="col-lg-12">
         <h2 class="text-center">Devices listed available by you</h2>
@@ -16,13 +20,15 @@
       <div class="filter-container col-10">
         <div class="filter-container-inner">
           <label for="filter">Filter: </label>
-          <input type="text" class="form-control input-form" id="filter" name="filter" [(ngModel)]="filter" (input)="onFilterChange()">
+          <input type="text" class="form-control input-form" id="filter" name="filter" [(ngModel)]="filter"
+                 (input)="onFilterChange()">
         </div>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="device-container col-lg-10">
-        <div class="device-element" *ngFor="let avail of availabilities$ | stringAvailFilter: filter | paginate: config;">
+        <div class="device-element"
+             *ngFor="let avail of availabilities$ | stringAvailFilter: filter | paginate: config;">
           <div class="device-element-img">
             <div class="device-element-img-inner"></div>
           </div>

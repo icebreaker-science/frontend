@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Input } from '@angular/core';
 import { AccountService } from '../account.service';
 import { WikiService } from "../wiki.service";
 import {map} from "rxjs/operators";
 import {PaginationInstance} from "ngx-pagination";
-import {User} from "../_types/User";
+import {UserProfile} from "../_types/UserProfile";
 
 @Component({
   selector: 'app-profile-page',
@@ -14,7 +13,7 @@ import {User} from "../_types/User";
 export class ProfilePageComponent implements OnInit {
 
   availabilities$;
-  profile;
+  profile:UserProfile;
   public config: PaginationInstance = {
     id: 'device_pagination',
     itemsPerPage: 12,
@@ -31,7 +30,6 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit(): void {
     const userId = this.accountService.getUserId();
     this.accountService.getUserProfile().subscribe((profile) => {
-      console.log(profile.forename);
       this.profile = profile;
     });
 
