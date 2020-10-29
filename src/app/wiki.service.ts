@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BackendService } from './backend.service';
-import { copyWikiPage, WikiPage } from './_types/WikiPage';
+import { copyWikiPage, WikiPage, wikiPageToFormData } from './_types/WikiPage';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {Availability} from './_types/Availability';
@@ -70,9 +70,8 @@ export class WikiService {
    */
   createWikiPage(device: WikiPage): Promise<number> {
     return new Promise<number>(((resolve, reject) => {
-        this.http.post<number>(`${this.backendService.url}/wiki`, JSON.stringify(device), {
-          headers: new HttpHeaders({'Content-Type': 'application/json'})
-        }).subscribe(
+        this.http.post<number>(`${this.backendService.url}/wiki`, wikiPageToFormData(device))
+          .subscribe(
           (id) => {
             const copy = copyWikiPage(device);
             copy.id = id;

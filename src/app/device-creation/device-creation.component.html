@@ -24,6 +24,8 @@
               <input type="text" class="form-control input-form" id="institution" name="institution" required [(ngModel)]="availability.institution" />
               <label for="researchGroup">Research Group:</label>
               <input type="text" class="form-control input-form" id="researchGroup" name="researchGroup" [(ngModel)]="availability.researchGroup" />
+              <label for="image">Image:</label>
+              <input type="file" class="form-control input-form border-0" id="image" name="image" (change)="handleFileInput($event.target.files)" />
               <div class="error-container" [hidden]="!this.error">
                 <span class="error-container-text">Something went wrong...</span>
               </div>

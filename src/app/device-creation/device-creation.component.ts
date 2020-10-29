@@ -50,4 +50,8 @@ export class DeviceCreationComponent implements OnInit {
        console.error('Something went wrong!', e);
      }
   }
+
+  handleFileInput(files: FileList) {
+    this.device.image = files.item(0);
+  }
 }
