@@ -3,6 +3,7 @@ import { BackendService } from './backend.service';
 import { Observable, Subject } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { map, switchMap } from 'rxjs/operators';
+import {User} from "./_types/User";
 
 
 @Injectable({
@@ -37,6 +38,7 @@ export class AccountService {
         res => {
           this.setUserId(res);
           this.setUsername(res);
+          this.setUser(res);
           observer.next(res);
         },
         err => observer.error(err),
@@ -64,11 +66,18 @@ export class AccountService {
   setUserId(res){
     const userId = res.accountId;
     localStorage.setItem('userId',userId);
-
   }
   getUserId(){
     const userId = localStorage.getItem('userId');
     return userId ? userId : {};
+  }
+  setUser(res){
+    const user = res;
+    localStorage.setItem('user', user);
+  }
+  getUser(){
+    const user = localStorage.getItem('user');
+    return user ? user : {};
   }
   setSession(token) {
     const decoded = this.parseJwt(token);

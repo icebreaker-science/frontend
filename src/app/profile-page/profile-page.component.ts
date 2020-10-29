@@ -4,6 +4,7 @@ import { AccountService } from '../account.service';
 import { WikiService } from "../wiki.service";
 import {map} from "rxjs/operators";
 import {PaginationInstance} from "ngx-pagination";
+import {User} from "../_types/User";
 
 @Component({
   selector: 'app-profile-page',
@@ -13,6 +14,7 @@ import {PaginationInstance} from "ngx-pagination";
 export class ProfilePageComponent implements OnInit {
 
   availabilities$;
+  profile;
   public config: PaginationInstance = {
     id: 'device_pagination',
     itemsPerPage: 12,
@@ -28,7 +30,13 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit(): void {
     const userId = this.accountService.getUserId();
+    this.accountService.getUserProfile().subscribe((profile) => {
+      console.log(profile.forename);
+      this.profile = profile;
+    });
+
     this.wikiService.getDeviceAvailability({"ownerId": userId}).subscribe(availabilities => this.availabilities$ = availabilities);
+
   }
   getCommentText(comment){
     if(comment && comment.length > 100){
