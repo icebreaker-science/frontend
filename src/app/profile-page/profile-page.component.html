@@ -27,17 +27,14 @@
     </div>
     <div class="row justify-content-center">
       <div class="device-container col-lg-10">
-        <div class="device-element"
-             *ngFor="let avail of availabilities$ | stringAvailFilter: filter | paginate: config;">
-          <div class="device-element-img">
-            <div class="device-element-img-inner"></div>
-          </div>
-          <div class="device-element-content">
-            <h4 class="device-element-headline">{{ avail.institution }}</h4>
-            <p class="device-element-desc">{{getCommentText(avail.comment)}}</p>
-            <a [routerLink]="['/wiki-page', avail.deviceId]">
-              <button class="btn btn-info">More</button>
-            </a>
+        <div class="col-lg-12 ow jumbotron"
+             *ngFor="let availability of availabilities$ | stringAvailFilter: filter | paginate: config;">
+          <div class="text-center py-2 text-dark justify-content-left">
+            <img src="" onerror="this.onerror=null; this.src='assets/img/logo.png'" class="img-thumbnail" alt="">
+            <div class="lead">
+              <span>Institution:<h3>{{ availability.institution }}</h3></span>
+              <span>comment: <p> {{ availability.comment }}</p></span>
+            </div>
           </div>
         </div>
       </div>

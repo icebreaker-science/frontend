@@ -16,7 +16,7 @@ export class ProfilePageComponent implements OnInit {
   profile:UserProfile;
   public config: PaginationInstance = {
     id: 'device_pagination',
-    itemsPerPage: 12,
+    itemsPerPage: 6,
     currentPage: 1
   };
   public filter = '';
