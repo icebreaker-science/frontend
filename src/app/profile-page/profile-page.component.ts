@@ -36,17 +36,18 @@ export class ProfilePageComponent implements OnInit {
     this.wikiService.getDeviceAvailability({ownerId: userId}).subscribe(availabilities => this.availabilities$ = availabilities);
 
   }
-  getCommentText(comment){
-    if (comment && comment.length > 100){
-       return comment.slice(0, 100) + '...' ;
+  titleDotCheck(title){
+    if (title && title.last === '.'){
+       return title;
     }
-    else if (comment){
-      return comment;
+    else if (title){
+      return title + '.';
     }
     else {
-      return '-';
+      return ' ';
     }
   }
+
   onPageChange(nmbr): void {
     this.config.currentPage = nmbr;
   }

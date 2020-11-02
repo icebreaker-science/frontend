@@ -1,9 +1,17 @@
 <div id="main">
   <div class="container-fluid content">
     <div class="row justify-content-center">
-      <div class="row col-12 p-2 justify-content-center " id="profile-row">
-        <div class="col-6 align-self-center  ">
-          <span class=""> <p>{{profile.title + '.'}} {{profile.forename + ' ' + profile.surname}}</p></span>
+      <div class="row col-12 p-5 justify-content-center " id="profile-row">
+        <div class="col-8 justify-content-start ">
+          <span>
+            <img src="" onerror="this.onerror=null; this.src='assets/img/icebear.jpg'"
+                 class="img-thumbnail profile-pic" alt="">
+            <p
+              class="my-0 px-3 d-inline">{{titleDotCheck(profile.title)}} {{profile.forename + ' ' + profile.surname}}</p></span>
+        </div>
+      </div>
+      <div class="row col-8">
+        <div class="col-12 border my-4 p-4 rounded">
           <span class="text-left">Institution: <p> {{profile.institution }}</p></span>
           <span class="text-left">City: <p>{{profile.city}}</p></span>
           <span class="text-left">Research area: <p>{{profile.researchArea}}</p></span>
@@ -14,7 +22,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="filter-container col-10">
+      <div class="filter-container col-10 my-4">
         <div class="filter-container-inner">
           <label for="filter">Filter: </label>
           <input type="text" class="form-control input-form" id="filter" name="filter" [(ngModel)]="filter"
@@ -28,9 +36,12 @@
              *ngFor="let availability of availabilities$ | stringAvailFilter: filter | paginate: config;">
           <div class="text-center py-2 text-dark justify-content-left">
             <img src="" onerror="this.onerror=null; this.src='assets/img/logo.png'" class="img-thumbnail" alt="">
-            <div class="lead">
+            <div class="lead my-2">
               <span>Institution:<h3>{{ availability.institution }}</h3></span>
               <span>comment: <p> {{ availability.comment }}</p></span>
+              <a [routerLink]="['/wiki-page', availability.deviceId]">
+                <button class="btn btn-info">See Device</button>
+              </a>
             </div>
           </div>
         </div>

@@ -9,6 +9,13 @@
 #profile-row{
   background-color: #eef9fa;
 }
+.profile-pic{
+  display: inline;
+  width:10vw;
+  height:10vw;
+  margin-right: 4vw;
+  border-radius: 75%;
+}
 .device-container {
   display: flex;
   flex-wrap: wrap;
