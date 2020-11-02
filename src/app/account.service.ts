@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BackendService } from './backend.service';
-import { Observable, Subject } from 'rxjs';
+import {Observable, Subject, throwError} from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { map, switchMap } from 'rxjs/operators';
 import { UserProfile } from './_types/UserProfile';
@@ -21,6 +21,14 @@ export class AccountService {
       '/account/register',
       { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
       );
+  }
+
+  validateAccount(key) {
+    return this.backendService.post(
+      {},
+      `/account/validate-email?key=${key}`,
+      {}
+    );
   }
 
   login(userData) {

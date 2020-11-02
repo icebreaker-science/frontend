@@ -9,6 +9,7 @@ import { NetworkComponent } from './network/network.component';
 import { WikiComponent } from './wiki/wiki.component';
 import { WikiPageComponent } from './wiki-page/wiki-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { EmailValidationComponent } from './email-validation/email-validation.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'network', component: NetworkComponent },
   { path: 'wiki', component: WikiComponent },
   { path: 'wiki-page/:id', component: WikiPageComponent},
-  { path: 'settings/profile', component: ProfilePageComponent}
+  { path: 'settings/profile', component: ProfilePageComponent},
+  { path: 'validate-email', component: EmailValidationComponent}
 ];
 
 @NgModule({
