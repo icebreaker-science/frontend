@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Availability } from "./_types/Availability";
-import {WikiPage} from "./_types/WikiPage";
+import { Availability } from './_types/Availability';
+import {WikiPage} from './_types/WikiPage';
 
 @Pipe({
   name: 'stringAvailFilter'

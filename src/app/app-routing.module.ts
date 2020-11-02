@@ -8,7 +8,7 @@ import { DeviceCreationComponent } from './device-creation/device-creation.compo
 import { NetworkComponent } from './network/network.component';
 import { WikiComponent } from './wiki/wiki.component';
 import { WikiPageComponent } from './wiki-page/wiki-page.component';
-import { ProfilePageComponent } from "./profile-page/profile-page.component";
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 
 const routes: Routes = [
@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'network', component: NetworkComponent },
   { path: 'wiki', component: WikiComponent },
   { path: 'wiki-page/:id', component: WikiPageComponent},
-  { path: 'profile-page/:userName', component: ProfilePageComponent}
+  { path: 'settings/profile', component: ProfilePageComponent}
 ];
 
 @NgModule({

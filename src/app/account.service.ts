@@ -64,7 +64,7 @@ export class AccountService {
   }
   setUserId(res){
     const userId = res.accountId;
-    localStorage.setItem('userId',userId);
+    localStorage.setItem('userId', userId);
   }
   getUserId(){
     const userId = localStorage.getItem('userId');

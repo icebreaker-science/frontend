@@ -14,10 +14,12 @@ export class WikiService {
   private wikiPagesStore = new Map<number, WikiPage>(); // id -> WikiPage
 
   private _wikiPages$ = new BehaviorSubject<WikiPage[]>([]);
+
   /**
    * This observable covers all wiki pages that were loaded but not necessary all existing wiki pages.
    */
   readonly wikiPages$ = this._wikiPages$.asObservable();
+
 
   constructor(
     private http: HttpClient,

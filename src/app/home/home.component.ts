@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.accountService.getUserProfile().subscribe((profile) => {
-      console.log(profile.forename);
     });
   }
 
