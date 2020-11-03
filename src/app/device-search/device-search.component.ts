@@ -12,7 +12,7 @@ import { environment } from '../../environments/environment';
 })
 export class DeviceSearchComponent implements OnInit {
 
-  mediaURL = environment.backendUrl + "/media/";
+  mediaURL = environment.backendUrl + '/media/';
   devices$ = this.wikiService.wikiPages$.pipe(
     map(wikiPages => wikiPages.filter(w => w.type === 'device'))
   );
