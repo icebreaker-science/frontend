@@ -31,7 +31,7 @@
     </div>
     <div class="header-profile">
       <a [hidden]="userName" class="header-profile-link login" routerLink="/login">Log In</a>
-      <span [hidden]="!userName" class="header-profile-username">{{ userName }}</span>
+      <a [hidden]="!userName" class="header-profile-username" routerLink= "/settings/profile"> {{ userName }} </a>
       <a [hidden]="!userName" class="header-profile-link logout" (click)="logout()">Log Out</a>
     </div>
   </div>

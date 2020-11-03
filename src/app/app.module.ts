@@ -22,6 +22,8 @@ import { StringFilterPipe } from './string-filter.pipe';
 import { WikiPageComponent } from './wiki-page/wiki-page.component';
 import { WikiPageDeviceComponent } from './wiki-page/wiki-page-device/wiki-page-device.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { StringAvailFilterPipe } from './string-avail-filter.pipe';
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     WikiPageComponent,
     WikiPageDeviceComponent,
     ContactFormComponent,
+    ProfilePageComponent,
+    StringAvailFilterPipe,
   ],
   imports: [
     BrowserModule,

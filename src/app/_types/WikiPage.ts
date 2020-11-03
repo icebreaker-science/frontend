@@ -4,7 +4,7 @@ export interface WikiPage {
   title: string;
   description: string;
   references?: string;
-  image?: File
+  image?: File;
 }
 
 
@@ -14,10 +14,10 @@ export function copyWikiPage(wikiPage: WikiPage) {
 
 export function wikiPageToFormData(wikiPage: WikiPage) {
   const data: FormData = new FormData();
-  data.append("description", wikiPage.description);
-  data.append("title", wikiPage.title);
-  data.append("type", wikiPage.type);
-  data.append("references", wikiPage.references);
-  data.append("image", wikiPage.image);
+  data.append('description', wikiPage.description);
+  data.append('title', wikiPage.title);
+  data.append('type', wikiPage.type);
+  data.append('references', wikiPage.references);
+  data.append('image', wikiPage.image);
   return data;
 }
