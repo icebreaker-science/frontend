@@ -19,6 +19,8 @@ export class DeviceCreationComponent implements OnInit {
     description: '',
     references: '',
   };
+
+  addAvailability = false;
   availability: Availability = {
     deviceId: null,
     comment: '',
@@ -42,7 +44,9 @@ export class DeviceCreationComponent implements OnInit {
      try {
        const id = await this.wikiService.createWikiPage(this.device);
        this.availability.deviceId = id;
-       await this.wikiService.sendDeviceData(this.availability);
+       if (this.addAvailability) {
+         await this.wikiService.sendDeviceData(this.availability);
+       }
        console.log(`New device created, ID=${ id }.`);
        await this.router.navigateByUrl('/device-search');
      } catch (e) {
