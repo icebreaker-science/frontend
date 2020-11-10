@@ -11,21 +11,59 @@
           <div class="row justify-content-center">
             <form class="form-group col-lg-6 col-md-8" (ngSubmit)="submit()" #addDeviceForm="ngForm">
               <label for="title">Title: *</label>
-              <input type="text" class="form-control input-form" id="title" name="title" required [(ngModel)]="device.title" />
+              <input
+                type="text" class="form-control input-form" id="title" name="title" required [(ngModel)]="device.title"
+                placeholder="The name/model of the device"
+              />
               <label for="description">Description: *</label>
-              <textarea type="text" class="form-control input-form" id="description" name="description" required [(ngModel)]="device.description"></textarea>
+              <textarea
+                type="text" class="form-control input-form" id="description" name="description" required
+                [(ngModel)]="device.description"
+                placeholder="A brief description of the device: For example, what is the purpose of this device? Which properties does it have? Feel free to add links to official documentations."
+              ></textarea>
               <label for="references">References:</label>
-              <textarea type="text" class="form-control input-form" id="references" name="references" [(ngModel)]="device.references"></textarea>
-              <label for="comment">Comment:</label>
-              <textarea type="text" class="form-control input-form" id="comment" name="comment" [(ngModel)]="availability.comment"></textarea>
-              <label for="germanPostalCode">Postal Code: *</label>
-              <input type="text" class="form-control input-form" id="germanPostalCode" name="germanPostalCode" required pattern="[0-9]{5}" [(ngModel)]="availability.germanPostalCode" />
-              <label for="institution">Institution: *</label>
-              <input type="text" class="form-control input-form" id="institution" name="institution" required [(ngModel)]="availability.institution" />
-              <label for="researchGroup">Research Group:</label>
-              <input type="text" class="form-control input-form" id="researchGroup" name="researchGroup" [(ngModel)]="availability.researchGroup" />
+              <textarea
+                type="text" class="form-control input-form" id="references" name="references"
+                [(ngModel)]="device.references"
+                placeholder="Publications describing (the methods behind) the device"
+              ></textarea>
               <label for="image">Image:</label>
               <input type="file" class="form-control input-form border-0" id="image" name="image" (change)="handleFileInput($event.target.files)" />
+
+              <div class="form-group add-availability-check">
+                <input
+                  type="checkbox" class="form-check-input" id="addAvailability" name="addAvailability"
+                  [(ngModel)]="addAvailability"
+                />
+                <label class="form-check-label" for="addAvailability">
+                  This device is available in my research group/department and other users may contact me if they are
+                  interested in using it.
+                </label>
+              </div>
+
+              <label for="institution">Institution: *</label>
+              <input
+                type="text" class="form-control input-form" id="institution" name="institution"
+                [(ngModel)]="availability.institution" [disabled]="!addAvailability" [required]="addAvailability"
+              />
+              <label for="researchGroup">Research Group:</label>
+              <input
+                type="text" class="form-control input-form" id="researchGroup" name="researchGroup"
+                [(ngModel)]="availability.researchGroup" [disabled]="!addAvailability"
+              />
+              <label for="germanPostalCode">Postal Code: *</label>
+              <input
+                type="text" class="form-control input-form" id="germanPostalCode" name="germanPostalCode"
+                pattern="[0-9]{5}" [(ngModel)]="availability.germanPostalCode"
+                [disabled]="!addAvailability" [required]="addAvailability"
+                placeholder="The location of the device"
+              />
+              <label for="comment">Comment:</label>
+              <textarea
+                type="text" class="form-control input-form" id="comment" name="comment"
+                [(ngModel)]="availability.comment" [disabled]="!addAvailability"
+                placeholder="When should other users reach out to you? Are you offering paid services? Are you looking for cooperations?"
+              ></textarea>
               <div class="error-container" [hidden]="!this.error">
                 <span class="error-container-text">Something went wrong...</span>
               </div>
