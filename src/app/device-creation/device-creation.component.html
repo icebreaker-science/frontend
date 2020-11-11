@@ -27,10 +27,10 @@
                 [(ngModel)]="device.references"
                 placeholder="Publications describing (the methods behind) the device"
               ></textarea>
-              <label for="image">Image: (MAX {{ fileSizeLimit }}KB) </label>
+              <label for="image">Image: (max {{ fileSizeLimit }}KB) </label>
               <input type="file" class="form-control input-form border-0" id="image" name="image"
               [(ngModel)]="device.image" (change)="handleFileInput($event.target.files)" accept="{{ fileTypesAllowed }}"/>
-              <div class="error-container" [hidden]="!this.imageError">
+              <div class="error-container" *ngIf="this.imageError">
                 <span class="error-container-text">{{ imageError }}</span>
               </div>
               <div class="form-group add-availability-check">
