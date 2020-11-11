@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'http://localhost:9090'
+  backendUrl: 'http://localhost:9090',
+  maxImageSizeKB: 1024,
+  allowedImageTypes: 'image/jpeg,image/bmp,image/png'
 };
 
 /*

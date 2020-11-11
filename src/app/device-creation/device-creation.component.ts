@@ -3,6 +3,7 @@ import { WikiService } from '../wiki.service';
 import { WikiPage } from '../_types/WikiPage';
 import { Router } from '@angular/router';
 import {Availability} from '../_types/Availability';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -11,7 +12,9 @@ import {Availability} from '../_types/Availability';
   styleUrls: ['./device-creation.component.scss']
 })
 export class DeviceCreationComponent implements OnInit {
-
+  imageError;
+  fileSizeLimit = environment.maxImageSizeKB;
+  fileTypesAllowed = environment.allowedImageTypes;
   error = false;
   device: WikiPage = {
     type: 'device',
@@ -56,6 +59,12 @@ export class DeviceCreationComponent implements OnInit {
   }
 
   handleFileInput(files: FileList) {
-    this.device.image = files.item(0);
+    const file = files[0];
+    if (file.size > this.fileSizeLimit * 1024) {
+      this.device.image = null;
+      this.imageError = 'Image too big';
+    } else {
+      this.imageError = null;
+    }
   }
 }
