@@ -48,6 +48,8 @@ import {environment} from '../environments/environment';
     ProfilePageComponent,
     StringAvailFilterPipe,
     EmailValidationComponent,
+    AvailabilityEditComponent,
+    AvailabilityDeleteComponent,
   ],
   imports: [
     BrowserModule,
