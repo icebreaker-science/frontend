@@ -1,0 +1,61 @@
+<div class="edit-form">
+  <div class="edit-form-overlay"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 edit-form-content">
+        <a class="close-btn" (click)="close()"></a>
+        <div class="row justify-content-center">
+          <div class="col-10">
+            <div [hidden]="!infoMessage" *ngIf="this.infoMessage" class="info-container">
+              <span>{{ this.infoMessage }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center" [hidden]="infoMessage">
+          <div class="col-lg-12 ">
+            <h2 class="text-center my-1 mb-5">Edit device availability</h2>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-lg-12" *ngIf="availability">
+            <p *ngIf="availability.researchGroup; else elseResearch">
+              This device is available at
+              the {{ availability.researchGroup }} of the {{ availability.institution }}</p>
+            <ng-template #elseResearch>
+              <p>This device is available at the {{ availability.institution }}</p>
+            </ng-template>
+          </div>
+          <div class="w-100"></div>
+          <div *ngIf="availability" class="col-lg-12">
+            <h4>Comment:</h4>
+            <p>{{ availability.comment }}</p>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-lg-12">
+            <div *ngIf="this.infoMessage" class="info-container">
+              <span>{{ this.infoMessage }}</span>
+            </div>
+            <div class="row justify-content-center" *ngIf="availability">
+              <form class="col-md-10 my-2 p-4 form-group rounded" (ngSubmit)="sendEdit()" #contactForm="ngForm">
+                <label for="comment">Comment</label>
+                <textarea type="text" class="form-control input-form" id="comment" name="comment" required
+                          [(ngModel)]="reqData.comment"></textarea>
+                <label for="germanPostalCode">Postal Code</label>
+                <input type="text" class="form-control input-form" id="germanPostalCode" name="germanPostalCode"
+                       required pattern="[0-9]{5}" [(ngModel)]="reqData.germanPostalCode"/>
+                <label for="institution">Institution</label>
+                <input type="text" class="form-control input-form" id="institution" name="institution" required
+                       [(ngModel)]="reqData.institution"/>
+                <label for="researchGroup">Research group</label>
+                <input type="text" class="form-control input-form" id="researchGroup" name="researchGroup" required
+                       [(ngModel)]="reqData.researchGroup"/>
+                <div class="button-wrapper">
+                  <button class="button" type="submit" [disabled]="!contactForm.form.valid">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
