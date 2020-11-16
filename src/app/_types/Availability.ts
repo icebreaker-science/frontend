@@ -1,5 +1,5 @@
 export interface Availability {
-  id: number;
+  id?: number;
   deviceId: number;
   comment?: string;
   germanPostalCode?: string;
