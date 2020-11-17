@@ -14,13 +14,6 @@ export class AvailabilityEditComponent implements OnInit {
   @Output() editMsg: EventEmitter<void> = new EventEmitter<void>();
   @Input() infoMessage: string;
 
-  reqData = {
-    comment: '',
-    deviceId: 0,
-    germanPostalCode: '',
-    institution: '',
-    researchGroup: '',
-  };
   editError = '';
 
   constructor(private backendService: BackendService,
@@ -35,19 +28,11 @@ export class AvailabilityEditComponent implements OnInit {
   }
 
   sendEdit(): void {
-    this.reqData.deviceId = this.availability.id;
-    this.backendService.put(this.reqData,
+    this.backendService.put(this.availability,
       '/device-availability/' + `${this.availability.id}`,
       {headers: new HttpHeaders({'Content-Type': 'application/json'})})
       .subscribe(
         () => {
-          this.reqData = {
-            deviceId: 0,
-            comment: '',
-            germanPostalCode: '',
-            institution: '',
-            researchGroup: '',
-          };
           this.editMsg.emit();
         },
         (error) => {

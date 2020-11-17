@@ -13,7 +13,7 @@ import {Availability} from '../_types/Availability';
 })
 export class ProfilePageComponent implements OnInit {
 
-  @Output() infoMessage = '';
+  @Output() infoMessage;
   profile: UserProfile;
   availabilities$: Availability [];
   editForm = false;
@@ -37,6 +37,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.infoMessage = '';
     const userId = this.accountService.getUserId();
     this.accountService.getUserProfile().subscribe((profile) => {
         this.profile = profile;
