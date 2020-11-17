@@ -35,7 +35,7 @@ export class ContactFormComponent implements OnInit {
   send(): void {
     this.backendService.post(
       this.requestData,
-      `/device-availability/${this.availability.deviceId}/contact`,
+      `/device-availability/${this.availability.id}/contact`,
       { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
       .subscribe(
         () => {
