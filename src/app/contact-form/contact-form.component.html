@@ -24,21 +24,24 @@
           <div class="col-lg-12">
             <h4>Contact</h4>
             <div class="row justify-content-center">
-              <form class="col-md-10 form-group" (ngSubmit)="send()" #contactForm="ngForm">
+              <form class="col-md-10 form-group" (ngSubmit)="send(contactForm)" #contactForm="ngForm">
                 <label for="name">Name</label>
                 <input type="text" class="form-control input-form" id="name" name="name" required [(ngModel)]="requestData.name">
                 <label for="email">Email</label>
                 <input type="email" class="form-control input-form" id="email" name="email" required [(ngModel)]="requestData.email">
                 <label for="message">Message</label>
                 <textarea type="text" class="form-control input-form" id="message" name="message" required [(ngModel)]="requestData.message"></textarea>
+                <div *ngIf="!this.accountService.isLoginValid()">
+                  <ng-hcaptcha id="captcha" name="captcha" required [(ngModel)]="requestData.captcha" (error)="onCaptchaError($event)"></ng-hcaptcha>
+                </div>
                 <div class="button-wrapper">
                   <button class="button" type="submit" [disabled]="!contactForm.form.valid">Submit</button>
                 </div>
               </form>
             </div>
           </div>
-          <div class="error-container" [hidden]="!this.emailError">
-            <span class="error-container-text">{{ emailError }}</span>
+          <div class="error-container" [hidden]="!this.error">
+            <span class="error-container-text">{{ error }}</span>
           </div>
         </div>
       </div>

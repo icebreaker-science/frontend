@@ -42,6 +42,7 @@
                 This field is required.
               </div>
               <input type="text" placeholder="Research Area" class="form-control input-form half" id="researchArea" name="researchArea" [(ngModel)]="user.profile.researchArea">
+              <ng-hcaptcha id="captcha" name="captcha" required [(ngModel)]="user.captcha" (error)="onCaptchaError($event)"></ng-hcaptcha>
               <div class="error-container" [hidden]="!this.errors">
                 <div *ngFor="let error of this.errors">
                   <span class="error-container-text">{{error}}</span>
