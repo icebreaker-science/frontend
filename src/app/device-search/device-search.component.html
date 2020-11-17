@@ -16,7 +16,7 @@
       <div class="row justify-content-center">
         <div class="device-container col-lg-10">
           <div class="device-element" *ngFor="let d of devices$ | async | stringFilter: filter | paginate: config;">
-            <div class="device-element-img h-50">
+            <div class="device-element-img">
               <img src="{{mediaURL + d.media?.id}}" onerror="this.onerror=null; this.src='assets/img/logo.png'" class="img-thumbnail w-100 h-100" alt="">
             </div>
             <div class="device-element-content">
