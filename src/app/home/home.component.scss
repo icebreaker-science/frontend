@@ -51,11 +51,18 @@
     text-align: center;
 
     &-element {
+      display: flex;
+      justify-content: center;
       margin-bottom: 3rem;
 
-      img {
+      a {
+        display: block;
         width: 100%;
         max-width: 350px;
+
+        img {
+          width: 100%;
+        }
       }
     }
   }
