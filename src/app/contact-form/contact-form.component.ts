@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Availability } from '../_types/Availability';
 import { BackendService } from '../backend.service';
 import {HttpHeaders} from '@angular/common/http';
+import {AccountService} from '../account.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -18,10 +19,12 @@ export class ContactFormComponent implements OnInit {
     name: '',
     email: '',
     message: '',
+    captcha: '',
   };
-  emailError = '';
+  error = '';
 
   constructor(
+    public accountService: AccountService,
     private backendService: BackendService,
   ) { }
 
@@ -32,21 +35,25 @@ export class ContactFormComponent implements OnInit {
     this.hide.emit();
   }
 
-  send(): void {
+  send(contactForm): void {
     this.backendService.post(
       this.requestData,
       `/device-availability/${this.availability.id}/contact`,
       { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
       .subscribe(
         () => {
-          this.requestData = {
-            name: '',
-            email: '',
-            message: '',
-          };
+          contactForm.form.reset();
           this.msgSent.emit();
         },
-        (err) => this.emailError = err.error.message,
+        (err) => {
+          this.error = err.error.message;
+          this.requestData.captcha = '';
+        },
       );
+  }
+
+  // Captcha error
+  onCaptchaError(error: any) {
+    this.error = 'Error while validating captcha.';
   }
 }

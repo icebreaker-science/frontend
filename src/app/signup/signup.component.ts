@@ -28,7 +28,8 @@ export class SignupComponent implements OnInit {
         institution: '',
         city: '',
         researchArea: '',
-      }
+      },
+      captcha: '',
     };
     this.errors = null;
   }
@@ -41,6 +42,7 @@ export class SignupComponent implements OnInit {
       .subscribe(
         () => this.router.navigateByUrl('/login?registered=true'),
         (error) => {
+          this.user.captcha = ''; // reset captcha
           if (error.error.errors) {
             this.errors =  error.error.errors;
           } else {
@@ -48,5 +50,10 @@ export class SignupComponent implements OnInit {
           }
         },
       );
+  }
+
+  // Captcha error
+  onCaptchaError(error: any) {
+    this.errors = ['Error while validating captcha.'];
   }
 }

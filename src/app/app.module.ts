@@ -25,6 +25,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { StringAvailFilterPipe } from './string-avail-filter.pipe';
 import { EmailValidationComponent } from './email-validation/email-validation.component';
+import { NgHcaptchaModule } from 'ng-hcaptcha';
+import {environment} from '../environments/environment';
 
 
 @NgModule({
@@ -54,7 +56,11 @@ import { EmailValidationComponent } from './email-validation/email-validation.co
     NgbModule,
     FormsModule,
     NgxPaginationModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    NgHcaptchaModule.forRoot({
+      siteKey: environment.captchaSiteKey,
+      languageCode: 'en'
+    }),
   ],
   providers: [
     {

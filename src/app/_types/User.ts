@@ -11,4 +11,5 @@ export interface User {
     city: string,
     researchArea: string,
   };
+  captcha: string;
 }
