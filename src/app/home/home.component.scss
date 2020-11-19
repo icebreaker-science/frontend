@@ -50,6 +50,10 @@
   .logo-container {
     text-align: center;
 
+    &-hl {
+      margin-bottom: 2rem;
+    }
+
     &-element {
       display: flex;
       justify-content: center;
@@ -137,6 +141,13 @@
           img {
             width: auto;
           }
+        }
+      }
+    }
+    .logo-container {
+      &-element {
+        a {
+          max-width: 250px;
         }
       }
     }
