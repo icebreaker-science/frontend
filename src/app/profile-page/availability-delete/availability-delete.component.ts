@@ -35,7 +35,6 @@ export class AvailabilityDeleteComponent implements OnInit {
       .subscribe(
         () => {
           this.deleteMsg.emit();
-          // this.hideDelete.emit();
         },
         (error) => {
           this.deleteError = error.error.message;
