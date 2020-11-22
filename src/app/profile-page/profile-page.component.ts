@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../account.service';
-import { WikiService } from '../wiki.service';
+import {Component, OnInit, Output} from '@angular/core';
+import {AccountService} from '../account.service';
+import {WikiService} from '../wiki.service';
 import {map} from 'rxjs/operators';
 import {PaginationInstance} from 'ngx-pagination';
 import {UserProfile} from '../_types/UserProfile';
+import {Availability} from '../_types/Availability';
 
 @Component({
   selector: 'app-profile-page',
@@ -12,8 +13,16 @@ import {UserProfile} from '../_types/UserProfile';
 })
 export class ProfilePageComponent implements OnInit {
 
-  availabilities$;
+  @Output() infoMessage: string;
   profile: UserProfile;
+  availabilities$: Availability [];
+  editForm = false;
+  editAvailability: Availability;
+  deleteForm = false;
+  deleteAvailability;
+  // timeout for closing the window
+  private infoMessageTimeOut = 1500;
+
   public config: PaginationInstance = {
     id: 'device_pagination',
     itemsPerPage: 6,
@@ -28,22 +37,24 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.infoMessage = '';
     const userId = this.accountService.getUserId();
     this.accountService.getUserProfile().subscribe((profile) => {
-      this.profile = profile;
-    });
-
+        this.profile = profile;
+      },
+      error => console.error(error));
     this.wikiService.getDeviceAvailability({ownerId: userId}).subscribe(availabilities => this.availabilities$ = availabilities);
 
   }
-  titleDotCheck(title){
-    if (title && title.last === '.'){
-       return title;
-    }
-    else if (title){
-      return title + '.';
-    }
-    else {
+
+  titleDotCheck(title) {
+    if (title && title.indexOf('.') !== -1) {
+      return title[0].toUpperCase() +
+        title.slice(1);
+    } else if (title) {
+      return title[0].toUpperCase() +
+        title.slice(1) + '.';
+    } else {
       return ' ';
     }
   }
@@ -54,5 +65,41 @@ export class ProfilePageComponent implements OnInit {
 
   onFilterChange(): void {
     this.config.currentPage = 1;
+  }
+
+  // Edit form operations
+  openEditForm(availability): void {
+    this.editAvailability = availability;
+    this.editForm = true;
+  }
+
+  sendEditForm(): void {
+    setTimeout(() => {
+      this.editForm = false;
+      this.ngOnInit();
+    }, this.infoMessageTimeOut);
+    this.infoMessage = 'Device availability information has been changed!';
+  }
+
+  closeEditForm(): void {
+    this.editForm = false;
+  }
+
+  // Delete form operations
+  openDeleteForm(availability): void {
+    this.deleteAvailability = availability;
+    this.deleteForm = true;
+  }
+
+  closeDeleteForm(): void {
+    this.deleteForm = false;
+  }
+
+  sendDeleteForm(): void {
+    setTimeout(() => {
+      this.deleteForm = false;
+      this.ngOnInit();
+    }, this.infoMessageTimeOut);
+    this.infoMessage = 'Device availability information has been deleted!';
   }
 }

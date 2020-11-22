@@ -25,6 +25,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { StringAvailFilterPipe } from './string-avail-filter.pipe';
 import { EmailValidationComponent } from './email-validation/email-validation.component';
+import { AvailabilityEditComponent } from './profile-page/availability-edit/availability-edit.component';
+import { AvailabilityDeleteComponent } from './profile-page/availability-delete/availability-delete.component';
 import { NgHcaptchaModule } from 'ng-hcaptcha';
 import {environment} from '../environments/environment';
 
@@ -48,6 +50,8 @@ import {environment} from '../environments/environment';
     ProfilePageComponent,
     StringAvailFilterPipe,
     EmailValidationComponent,
+    AvailabilityEditComponent,
+    AvailabilityDeleteComponent,
   ],
   imports: [
     BrowserModule,

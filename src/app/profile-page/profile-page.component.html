@@ -1,20 +1,37 @@
+<app-availability-edit
+  [availability]="editAvailability"
+  [hidden]="!editForm"
+  (hideEdit)="closeEditForm();"
+  (editMsg)="sendEditForm();"
+  [infoMessage]="this.infoMessage"
+>
+</app-availability-edit>
+<app-availability-delete
+  [availability]="deleteAvailability"
+  [hidden]="!deleteForm"
+  (hideDelete)="closeDeleteForm();"
+  (deleteMsg)="sendDeleteForm();"
+  [infoMessage]="this.infoMessage"
+>
+</app-availability-delete>
 <div id="main">
   <div class="container-fluid content">
     <div class="row justify-content-center">
-      <div class="row col-12 p-5 justify-content-center " id="profile-row">
+      <div class="row col-12 p-5 justify-content-center " id="profile-row" *ngIf="profile">
         <div class="col-8 justify-content-start ">
           <span>
             <img src="" onerror="this.onerror=null; this.src='assets/img/icebear.jpg'"
                  class="img-thumbnail profile-pic" alt="">
             <p
-              class="my-0 px-3 d-inline">{{titleDotCheck(profile.title)}} {{profile.forename + ' ' + profile.surname}}</p></span>
+              class="my-0 px-3 d-inline">
+              {{titleDotCheck(profile.title)}} {{profile.forename + ' ' + profile.surname}}</p></span>
         </div>
       </div>
       <div class="row col-8">
-        <div class="col-12 border my-4 p-4 rounded">
+        <div class="col-12 border my-4 p-4 rounded" *ngIf="profile">
           <span class="text-left">Institution: <p> {{profile.institution }}</p></span>
           <span class="text-left">City: <p>{{profile.city}}</p></span>
-          <span class="text-left">Research area: <p>{{profile.researchArea}}</p></span>
+          <span class="text-left" *ngIf="profile.researchArea">Research area: <p>{{profile.researchArea}}</p></span>
         </div>
       </div>
       <div class="col-lg-12">
@@ -30,27 +47,40 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <div class="device-container col-lg-10">
-        <div class="col-lg-12 ow jumbotron"
-             *ngFor="let availability of availabilities$ | stringAvailFilter: filter | paginate: config;">
-          <div class="text-center py-2 text-dark justify-content-left">
+    <div class="text-center py-2 text-dark justify-content-left">
+      <div class="row justify-content-center">
+        <div class="device-container col-lg-10">
+          <div class="col-lg-12 ow jumbotron"
+               *ngFor="let availability of availabilities$ | stringAvailFilter: filter | paginate: config;">
+
             <img src="" onerror="this.onerror=null; this.src='assets/img/logo.png'" class="img-thumbnail" alt="">
             <div class="lead my-2">
               <span>Institution:<h3>{{ availability.institution }}</h3></span>
               <span>comment: <p> {{ availability.comment }}</p></span>
-              <a [routerLink]="['/wiki-page', availability.deviceId]">
+              <a class="mx-2 my-2" [routerLink]="['/wiki-page', availability.deviceId]">
                 <button class="btn btn-info">See Device</button>
               </a>
+              <div class="row my-3 justify-content-center">
+                <div class="col-6">
+                  <a class="mx-2" (click)="openEditForm(availability)">
+                    <button class="btn btn-success">Edit</button>
+                  </a>
+                  <a class="mx-2" (click)="openDeleteForm(availability)">
+                    <button class="btn btn-danger">Delete</button>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center my-3">
       <pagination-controls id="device_pagination"
                            (pageChange)="onPageChange($event)"
       ></pagination-controls>
     </div>
   </div>
 </div>
+
+
