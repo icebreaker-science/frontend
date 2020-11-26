@@ -110,5 +110,21 @@ export class AccountService {
     );
   }
 
+  forgotPassword(userData) {
+    return this.backendService.put(
+      userData,
+      '/account/forgot-password',
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+    );
+  }
+
+  resetPassword(userData) {
+    return this.backendService.post(
+      userData,
+      '/account/reset-password',
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+    );
+  }
+
 }
 

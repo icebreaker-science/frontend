@@ -9,6 +9,9 @@
           <div *ngIf="this.validated" class="col-lg-6 info-container">
             <span>Your Email Address was validated!</span>
           </div>
+          <div *ngIf="this.pwChanged" class="col-lg-6 info-container">
+            <span>Your password has been changed!</span>
+          </div>
           <div *ngIf="this.notLoggedIn" class="col-lg-6 error-container">
             <span class="error-container-text">You are not logged in!</span>
           </div>
@@ -29,7 +32,7 @@
                 <input type="email" placeholder="Email" class="form-control input-form" id="email" name="email" required [(ngModel)]="email">
                 <input type="password" placeholder="Password" class="form-control input-form" id="password" name="password" required [(ngModel)]="password">
                 <div class="login-box-forgot">
-                  <a href="#">Forgot password?</a>
+                  <a routerLink="/forgot-password">Forgot password?</a>
                 </div>
                 <div class="error-container" [hidden]="!this.wrongCredentials">
                   <span class="error-container-text">Wrong email address and/or password!</span>
