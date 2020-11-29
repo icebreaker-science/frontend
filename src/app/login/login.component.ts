@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   newRegistered: boolean;
   notLoggedIn: boolean;
   validated: boolean;
+  pwChanged: boolean;
 
   constructor(
     private accountService: AccountService,
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
       this.newRegistered = params.registered;
       this.notLoggedIn = params.notLoggedIn;
       this.validated = params.validated;
+      this.pwChanged = params.pwChanged;
     });
   }
 

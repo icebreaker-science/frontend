@@ -10,6 +10,8 @@ import { WikiComponent } from './wiki/wiki.component';
 import { WikiPageComponent } from './wiki-page/wiki-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { EmailValidationComponent } from './email-validation/email-validation.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 const routes: Routes = [
@@ -22,7 +24,9 @@ const routes: Routes = [
   { path: 'wiki', component: WikiComponent },
   { path: 'wiki-page/:id', component: WikiPageComponent},
   { path: 'settings/profile', component: ProfilePageComponent},
-  { path: 'validate-email', component: EmailValidationComponent}
+  { path: 'validate-email', component: EmailValidationComponent},
+  { path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'reset-password', component: ResetPasswordComponent}
 ];
 
 @NgModule({
