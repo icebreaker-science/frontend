@@ -29,6 +29,7 @@ import { AvailabilityEditComponent } from './profile-page/availability-edit/avai
 import { AvailabilityDeleteComponent } from './profile-page/availability-delete/availability-delete.component';
 import { NgHcaptchaModule } from 'ng-hcaptcha';
 import {environment} from '../environments/environment';
+import { AvailabilityAddComponent } from './wiki-page/availability-add/availability-add.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
@@ -56,6 +57,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     AvailabilityDeleteComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
+    AvailabilityAddComponent,
   ],
   imports: [
     BrowserModule,

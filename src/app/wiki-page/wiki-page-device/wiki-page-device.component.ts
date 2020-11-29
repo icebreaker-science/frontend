@@ -14,6 +14,10 @@ export class WikiPageDeviceComponent implements OnInit {
   deviceAvailabilities: Availability[];
   contactForm = false;
   contactAvailability: Availability;
+  addAvailability: Availability ;
+  addForm = false;
+  infoMessage = '';
+  infoMessageTimeOut = 2000;
 
   constructor(
     private wikiService: WikiService
@@ -28,6 +32,14 @@ export class WikiPageDeviceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.infoMessage = '';
+    this.addAvailability = {
+      comment: '',
+      deviceId: 0,
+      germanPostalCode: '',
+      institution: '',
+      researchGroup: '',
+    };
     this.wikiService.getDeviceAvailability({
       deviceId: this.wikiPage.id
     }).subscribe(
@@ -48,5 +60,22 @@ export class WikiPageDeviceComponent implements OnInit {
   sendContactForm(): void {
     this.contactForm = false;
     this.msgSent.emit('Message has been sent to device owner!');
+  }
+
+  openAddForm(deviceId): void {
+    this.addAvailability.deviceId = deviceId;
+    this.addForm = true;
+  }
+
+  closeAddForm(): void {
+    this.addForm = false;
+  }
+
+  sendAddForm(): void {
+    this.infoMessage = 'Device availability has been added';
+    this.addForm = false;
+    setTimeout(() => {
+      this.ngOnInit();
+    }, this.infoMessageTimeOut);
   }
 }

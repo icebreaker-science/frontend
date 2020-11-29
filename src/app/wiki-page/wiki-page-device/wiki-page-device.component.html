@@ -5,6 +5,13 @@
   (msgSent)="sendContactForm();"
 >
 </app-contact-form>
+<app-availability-add
+  [availability]="addAvailability"
+  [hidden]="!addForm"
+  (hideAdd)="closeAddForm();"
+  (addMsgSent)="sendAddForm();"
+>
+</app-availability-add>
 <div class="wiki-device">
   <div class="row">
     <div class="col-12 wiki-device-hl">
