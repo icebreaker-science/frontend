@@ -32,6 +32,9 @@
                 <label for="researchGroup">Research group:</label>
                 <input type="text" class="form-control input-form" id="researchGroup" name="researchGroup" required
                        [(ngModel)]="availability.researchGroup"/>
+                <label for="disabled">Disabled:</label>
+                <input type="checkbox" class="form-control input-form w-0" id="disabled" name="disabled"
+                              [(ngModel)]="availability.disabled"/>
                 <div class="button-wrapper">
                   <button class="button" type="submit" [disabled]="!contactForm.form.valid">Submit</button>
                 </div>

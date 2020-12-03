@@ -31,6 +31,7 @@ export class WikiPageDeviceComponent implements OnInit {
       germanPostalCode: '',
       institution: '',
       researchGroup: '',
+      disabled: false,
     };
   }
 
