@@ -14,27 +14,32 @@ a {
 }
 
 p {
-  font-size: 1.875rem;
-  line-height: 2.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
 
-  &.small {
+  &.big {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
+  &.bigger {
+    font-size: 1.875rem;
+    line-height: 2.5rem;
+  }
 
   @media (max-width: 1199px) {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-
-    &.small {
+    &.big {
       font-size: 1rem;
       line-height: 1.5rem;
+    }
+    &.bigger {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
     }
   }
 
   @media (max-width: 575px) {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
 
@@ -59,8 +64,8 @@ h2 {
   margin-bottom: 1rem;
   font-size: 1.25rem;
   padding: 8px 15px;
-  height: 64px;
-  border-radius: 16px;
+  height: 58px;
+  border-radius: 8px;
   border: 2px solid $lightBlue;
 
   &.ng-touched.ng-invalid, &.invalid {
@@ -77,11 +82,11 @@ h2 {
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1199px) {
     font-size: 1rem;
     padding: 8px 10px;
-    height: 52px;
-    border-radius: 13px;
+    height: 46px;
+
   }
 }
 
@@ -128,7 +133,7 @@ h2 {
   font-size: 1.25rem;
   line-height: 1.5;
   border: none;
-  border-radius: 15px;
+  border-radius: 7px;
 
   user-select: none;
   -webkit-user-select: none;
@@ -137,7 +142,7 @@ h2 {
 
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 
-  @media (max-width: 767px) {
+  @media (max-width: 1199px) {
     padding: 6px 35px;
     font-size: 1rem;
   }
