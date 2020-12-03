@@ -29,9 +29,18 @@
                   Please enter a valid email.
                 </div>
               </div>
-              <input type="password" placeholder="Password *" class="form-control input-form" id="password" name="password" required #pw="ngModel" [(ngModel)]="user.account.password">
-              <div [hidden]="pw.valid || pw.untouched" class="form-alert">
-                This field is required.
+              <input  type="password" placeholder="Password *" class="form-control input-form" id="password" 
+                      name="password" required #pw="ngModel" [(ngModel)]="user.account.password" minlength="8" maxlength="64">
+              <div *ngIf="pw.invalid && (pw.dirty || pw.touched)" class="form-alert">
+                  <div *ngIf="pw.errors.required">
+                    This field is required.
+                  </div>
+                  <div *ngIf="pw.errors.minlength">
+                    Password must be at least 8 characters long.
+                  </div>
+                  <div *ngIf="pw.errors.maxlength">
+                    Password must not exceed 64 characters long.
+                  </div>
               </div>
               <input type="text" placeholder="Institution *" class="form-control input-form half" id="institution" name="institution" required #inst="ngModel" [(ngModel)]="user.profile.institution">
               <div [hidden]="inst.valid || inst.untouched" class="form-alert">
