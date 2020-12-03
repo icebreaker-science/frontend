@@ -1,0 +1,40 @@
+@import "../../scss/helper/variables";
+
+.wiki-page {
+  border-top: 1px solid $lightgrey;
+
+  .container {
+    border-left: 1px solid $lightgrey;
+    border-right: 1px solid $lightgrey;
+  }
+
+  &-hl {
+    border-bottom: 1px solid $lightgrey;
+  }
+
+  &-container {
+    padding-top: 45px;
+    border-right: 1px solid $lightgrey;
+    border-bottom: 1px solid $lightgrey;
+  }
+
+  &-ref {
+    margin-top: 35px;
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  &-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid $lightgrey;
+
+    img {
+      max-width: 100%;
+      max-height: 450px;
+    }
+  }
+}

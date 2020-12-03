@@ -1,30 +1,24 @@
-<div class="container">
-    <div class="jumbotron" *ngIf="wikiPage">
-        <form class="text-center border border-light p-5">
-            <p class="h4 mb-4 font-weight-bold">{{ wikiPage.title }}</p>
-            <div class="col-auto">
-                <label for="ID" class="font-weight-bold">ID</label>
-                <p>{{ wikiPage.id }}</p>
-            </div>
-            <div class="col-auto">
-                <label for="Type" class="font-weight-bold">Type</label>
-                <p>{{ wikiPage.type }}</p>
-            </div>
-            <div class="col-auto">
-                <label for="Title" class="font-weight-bold">Title</label>
-                <p>{{ wikiPage.title }}</p>
-            </div>
-            <div class="col-auto">
-                <label for="Description" class="font-weight-bold">Description</label>
-                <p>{{ wikiPage.description }}</p>
-            </div>
-            <div class="col-auto">
-                <label for="References" class="font-weight-bold ">References</label>
-                <p>{{ wikiPage.references }}</p>
-            </div>
-        </form>
+<div id="main" class="wiki-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 wiki-page-hl">
+        <h2>{{ wikiPage.title }}</h2>
+      </div>
+      <div class="col-xl-6 wiki-page-container">
+        <div class="wiki-page-desc">
+          <p>{{ wikiPage.description }}</p>
+        </div>
+        <div class="wiki-page-ref">
+          <span>References</span>
+          <p>{{ wikiPage.references }}</p>
+        </div>
+      </div>
+      <div class="col-xl-6 wiki-page-img">
+        <img src="assets/img/icebear_icebreaker.png" alt="">
+      </div>
     </div>
     <div [ngSwitch]="wikiPage?.type">
-        <app-wiki-page-device *ngSwitchCase="'device'" [wikiPage]="wikiPage"></app-wiki-page-device>
+      <app-wiki-page-device *ngSwitchCase="'device'" [wikiPage]="wikiPage"></app-wiki-page-device>
     </div>
+  </div>
 </div>
