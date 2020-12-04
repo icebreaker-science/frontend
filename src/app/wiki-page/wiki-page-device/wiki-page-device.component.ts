@@ -47,13 +47,20 @@ export class WikiPageDeviceComponent implements OnInit {
       (err) => console.error(err)
     );
   }
-
+  setModalOpened(): void {
+     document.querySelector('body').style.overflow = 'hidden';
+    }
+  setModalClosed(): void{
+    document.querySelector('body').style.overflow = 'auto';
+  }
   openContactForm(availability): void {
+    this.setModalOpened();
     this.contactAvailability = availability;
     this.contactForm = true;
   }
 
   closeContactForm(): void {
+    this.setModalClosed();
     this.contactForm = false;
   }
 
@@ -63,11 +70,13 @@ export class WikiPageDeviceComponent implements OnInit {
   }
 
   openAddForm(deviceId): void {
+    this.setModalOpened();
     this.addAvailability.deviceId = deviceId;
     this.addForm = true;
   }
 
   closeAddForm(): void {
+    this.setModalClosed();
     this.addForm = false;
   }
 

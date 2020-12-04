@@ -66,9 +66,15 @@ export class ProfilePageComponent implements OnInit {
   onFilterChange(): void {
     this.config.currentPage = 1;
   }
-
+  setModalOpened(): void {
+    document.querySelector('body').style.overflow = 'hidden';
+  }
+  setModalClosed(): void{
+    document.querySelector('body').style.overflow = 'auto';
+  }
   // Edit form operations
   openEditForm(availability): void {
+    this.setModalOpened();
     this.editAvailability = availability;
     this.editForm = true;
   }
@@ -82,16 +88,19 @@ export class ProfilePageComponent implements OnInit {
   }
 
   closeEditForm(): void {
+    this.setModalClosed();
     this.editForm = false;
   }
 
   // Delete form operations
   openDeleteForm(availability): void {
+    this.setModalOpened();
     this.deleteAvailability = availability;
     this.deleteForm = true;
   }
 
   closeDeleteForm(): void {
+    this.setModalClosed();
     this.deleteForm = false;
   }
 
