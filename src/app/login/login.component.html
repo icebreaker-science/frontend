@@ -17,8 +17,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="login-img col-xl-7 col-lg-5 order-lg-2">
-            <img class="login-img-big" src="assets/img/icebear.jpg">
+          <div class="login-img col-xl-6 col-lg-5 order-lg-2">
+            <img class="login-img-big" src="assets/img/icebear_icebreaker.png">
             <div class="login-img-bubble">
               <div class="login-img-bubble-inner">
                 <h2>Welcome back!</h2>
@@ -26,8 +26,9 @@
               </div>
             </div>
           </div>
-          <div class="login-outerbox col-xl-5 col-lg-7 order-lg-1">
+          <div class="login-outerbox col-xl-6 col-lg-7 order-lg-1">
             <div class="login-box">
+              <h2>Sign in</h2>
               <form class="form-group" (ngSubmit)="login()" #loginForm="ngForm">
                 <input type="email" placeholder="Email" class="form-control input-form" id="email" name="email" required [(ngModel)]="email">
                 <input type="password" placeholder="Password" class="form-control input-form" id="password" name="password" required [(ngModel)]="password">
@@ -40,11 +41,11 @@
                 <div class="button-wrapper">
                   <button class="button" type="submit" [disabled]="!loginForm.form.valid">Log in</button>
                 </div>
-                <div class="login-box-check">
+                <!--<div class="login-box-check">
                   <input id="stayLoggedIn" name="stayLoggedIn" type="checkbox"><label for="stayLoggedIn">Keep me logged in</label>
-                </div>
+                </div>-->
               </form>
-              <p class="small">Don't have an account? <a routerLink="/signup">Register now</a></p>
+              <p>Don't have an account? <a routerLink="/signup">Register now</a></p>
             </div>
           </div>
         </div>
