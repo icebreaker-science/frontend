@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class WikiPageComponent implements OnInit {
   wikiPage: WikiPage;
+  infoMessage: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,4 +33,8 @@ export class WikiPageComponent implements OnInit {
     });
   }
 
+  setMessage(msg): void {
+    window.scroll(0, 0);
+    this.infoMessage = msg;
+  }
 }

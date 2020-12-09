@@ -5,27 +5,22 @@
   (msgSent)="sendContactForm();"
 >
 </app-contact-form>
-<div class="jumbotron text-center">
-    <p *ngIf="deviceAvailabilities && deviceAvailabilities.length === 0" class="h4 mb-4">
-        This device is currently not offered by any institution
-    </p>
-    <p *ngIf="!deviceAvailabilities || deviceAvailabilities.length > 0" class="h4 mb-4">
-        This device is offered by the following institutions
-    </p>
-
-    <div *ngIf="this.infoMessage" class="info-container">
-      <span>{{ infoMessage }}</span>
+<div class="wiki-device">
+  <div class="row">
+    <div class="col-12 wiki-device-hl">
+      <h3>Offers</h3>
     </div>
-    <carousel [noPause]="false" [isAnimated]="true">
-        <slide *ngFor="let availability of deviceAvailabilities">
-            <div class="text-center py-5 text-dark">
-                <img src="" onerror="this.onerror=null; this.src='assets/img/logo.png'" class="img-thumbnail" alt="">
-                <div class="lead">
-                    <h3>{{ availability.institution }}</h3>
-                    <p>{{ availability.comment }}</p>
-                    <button type="button" class="btn btn-primary" (click)="openContactForm(availability)">Contact</button>
-                </div>
-            </div>
-        </slide>
-      </carousel>
+    <div  *ngIf="deviceAvailabilities && deviceAvailabilities.length === 0" class="col-12 wiki-device-subline">
+      <p>This device is currently not offered by any institution</p>
+    </div>
+  </div>
+  <div *ngFor="let availability of deviceAvailabilities" class="row wiki-device-offer">
+    <div class="col-lg-10">
+      <h4>{{ availability.institution }}</h4>
+      <p>{{ availability.comment }}</p>
+    </div>
+    <div class="col-lg-2 wiki-device-offer-button">
+      <button type="button" class="btn btn-primary" (click)="openContactForm(availability)">Contact</button>
+    </div>
+  </div>
 </div>

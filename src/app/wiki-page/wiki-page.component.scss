@@ -6,6 +6,7 @@
   .container {
     border-left: 1px solid $lightgrey;
     border-right: 1px solid $lightgrey;
+    border-bottom: 1px solid $lightgrey;
   }
 
   &-hl {
@@ -35,6 +36,14 @@
     img {
       max-width: 100%;
       max-height: 450px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    &-img {
+      img {
+        max-height: 250px;
+      }
     }
   }
 }

@@ -1,6 +1,9 @@
 <div id="main" class="wiki-page">
   <div class="container">
     <div class="row">
+      <div *ngIf="this.infoMessage" class="info-container col-12">
+        <span>{{ infoMessage }}</span>
+      </div>
       <div class="col-12 wiki-page-hl">
         <h2>{{ wikiPage.title }}</h2>
       </div>
@@ -18,7 +21,12 @@
       </div>
     </div>
     <div [ngSwitch]="wikiPage?.type">
-      <app-wiki-page-device *ngSwitchCase="'device'" [wikiPage]="wikiPage"></app-wiki-page-device>
+      <app-wiki-page-device
+        *ngSwitchCase="'device'"
+        [wikiPage]="wikiPage"
+        (msgSent)="setMessage($event);"
+      >
+      </app-wiki-page-device>
     </div>
   </div>
 </div>
