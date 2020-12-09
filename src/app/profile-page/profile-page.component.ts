@@ -37,6 +37,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setModalClosed();
     this.infoMessage = '';
     const userId = this.accountService.getUserId();
     this.accountService.getUserProfile().subscribe((profile) => {
@@ -66,12 +67,15 @@ export class ProfilePageComponent implements OnInit {
   onFilterChange(): void {
     this.config.currentPage = 1;
   }
+
   setModalOpened(): void {
     document.querySelector('body').style.overflow = 'hidden';
   }
-  setModalClosed(): void{
+
+  setModalClosed(): void {
     document.querySelector('body').style.overflow = 'auto';
   }
+
   // Edit form operations
   openEditForm(availability): void {
     this.setModalOpened();

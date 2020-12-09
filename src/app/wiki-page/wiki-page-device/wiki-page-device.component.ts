@@ -2,6 +2,7 @@ import {Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter} f
 import { WikiPage } from 'src/app/_types/WikiPage';
 import { Availability } from 'src/app/_types/Availability';
 import { WikiService } from 'src/app/wiki.service';
+import {AccountService} from '../../account.service';
 
 @Component({
   selector: 'app-wiki-page-device',
@@ -18,10 +19,13 @@ export class WikiPageDeviceComponent implements OnInit {
   addForm = false;
   infoMessage = '';
   infoMessageTimeOut = 2000;
+  isLoggedIn: boolean;
 
   constructor(
-    private wikiService: WikiService
+    private wikiService: WikiService,
+    private accountService: AccountService
   ) {
+    this.isLoggedIn = accountService.isLoginValid();
     this.contactAvailability = {
       deviceId: 0,
       comment: '',
@@ -65,6 +69,7 @@ export class WikiPageDeviceComponent implements OnInit {
   }
 
   sendContactForm(): void {
+    this.setModalClosed();
     this.contactForm = false;
     this.msgSent.emit('Message has been sent to device owner!');
   }
@@ -81,8 +86,9 @@ export class WikiPageDeviceComponent implements OnInit {
   }
 
   sendAddForm(): void {
-    this.infoMessage = 'Device availability has been added';
+    this.setModalClosed();
     this.addForm = false;
+    this.infoMessage = 'Device availability has been added';
     setTimeout(() => {
       this.ngOnInit();
     }, this.infoMessageTimeOut);
