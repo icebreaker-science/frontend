@@ -1,5 +1,5 @@
 <div id="main" class="wiki-page">
-  <div class="container">
+  <div class="container" *ngIf="wikiPage">
     <div class="row">
       <div *ngIf="this.infoMessage" class="info-container col-12">
         <span>{{ infoMessage }}</span>
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="col-xl-6 wiki-page-img">
-        <img src="assets/img/icebear_icebreaker.png" alt="">
+        <img [src]="getImageSrc()" alt="">
       </div>
     </div>
     <div [ngSwitch]="wikiPage?.type">
