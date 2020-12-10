@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import {Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter} from '@angular/core';
 import { WikiPage } from 'src/app/_types/WikiPage';
 import { Availability } from 'src/app/_types/Availability';
 import { WikiService } from 'src/app/wiki.service';
@@ -9,12 +9,11 @@ import { WikiService } from 'src/app/wiki.service';
   styleUrls: ['./wiki-page-device.component.scss']
 })
 export class WikiPageDeviceComponent implements OnInit {
-  @Input()
-  wikiPage: WikiPage;
+  @Input() wikiPage: WikiPage;
+  @Output() msgSent: EventEmitter<string> = new EventEmitter<string>();
   deviceAvailabilities: Availability[];
   contactForm = false;
   contactAvailability: Availability;
-  infoMessage = '';
 
   constructor(
     private wikiService: WikiService
@@ -48,6 +47,6 @@ export class WikiPageDeviceComponent implements OnInit {
 
   sendContactForm(): void {
     this.contactForm = false;
-    this.infoMessage = 'Message has been sent to device owner!';
+    this.msgSent.emit('Message has been sent to device owner!');
   }
 }
