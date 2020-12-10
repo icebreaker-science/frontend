@@ -17,7 +17,6 @@ export class WikiPageDeviceComponent implements OnInit {
   contactAvailability: Availability;
   addAvailability: Availability ;
   addForm = false;
-  infoMessage = '';
   infoMessageTimeOut = 2000;
   isLoggedIn: boolean;
 
@@ -36,7 +35,6 @@ export class WikiPageDeviceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.infoMessage = '';
     this.addAvailability = {
       comment: '',
       deviceId: 0,
@@ -88,7 +86,7 @@ export class WikiPageDeviceComponent implements OnInit {
   sendAddForm(): void {
     this.setModalClosed();
     this.addForm = false;
-    this.infoMessage = 'Device availability has been added';
+    this.msgSent.emit('Device availability has been added');
     setTimeout(() => {
       this.ngOnInit();
     }, this.infoMessageTimeOut);
