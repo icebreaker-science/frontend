@@ -5,12 +5,22 @@
   (msgSent)="sendContactForm();"
 >
 </app-contact-form>
+<app-availability-add
+  [availability]="addAvailability"
+  [hidden]="!addForm"
+  (hideAdd)="closeAddForm();"
+  (addMsgSent)="sendAddForm();"
+>
+</app-availability-add>
 <div class="wiki-device">
   <div class="row">
-    <div class="col-12 wiki-device-hl">
-      <h3>Offers</h3>
+    <div class="col-10 wiki-device-hl">
+        <h3>Offers</h3>
     </div>
-    <div  *ngIf="deviceAvailabilities && deviceAvailabilities.length === 0" class="col-12 wiki-device-subline">
+    <div  class="col-2 wiki-device-offer-button wiki-device-hl mt-0 ">
+      <button [hidden]="!isLoggedIn" type="button" class="btn btn-success" (click)="openAddForm(wikiPage.id)">Add Availability</button>
+    </div>
+    <div *ngIf="deviceAvailabilities && deviceAvailabilities.length === 0" class="col-12 wiki-device-subline">
       <p>This device is currently not offered by any institution</p>
     </div>
   </div>
