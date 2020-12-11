@@ -5,10 +5,10 @@ import {
   HttpEvent,
   HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
-import { EMPTY, Observable } from 'rxjs';
+import { EMPTY, Observable, throwError } from 'rxjs';
 import { environment } from '../environments/environment';
 import { AccountService } from './account.service';
-import { tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Router} from '@angular/router';
 
 @Injectable()
@@ -36,10 +36,19 @@ export class TokenInterceptor implements HttpInterceptor {
           `Bearer ${userToken}`)
       });
 
-      return next.handle(cloned);
+      return next.handle(cloned).pipe(catchError(err => this.handleError(err)));
     }
     else {
       return next.handle(req);
+    }
+  }
+
+  private handleError(err: HttpErrorResponse): Observable<any> {
+    if (err.status === 401) {
+        this.accountService.logout();
+        this.router.navigateByUrl('/login?tokenInvalidated=true');
+    } else {
+      return throwError(err);
     }
   }
 }

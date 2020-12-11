@@ -12,6 +12,9 @@
           <div *ngIf="this.pwChanged" class="col-lg-6 info-container">
             <span>Your password has been changed!</span>
           </div>
+          <div *ngIf="this.tokenInvalidated" class="col-lg-6 info-container">
+            <span>You have been logged out!</span>
+          </div>
           <div *ngIf="this.notLoggedIn" class="col-lg-6 error-container">
             <span class="error-container-text">You are not logged in!</span>
           </div>
