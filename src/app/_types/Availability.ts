@@ -5,4 +5,5 @@ export interface Availability {
   germanPostalCode?: string;
   institution: string;
   researchGroup?: string;
+  disabled: boolean;
 }

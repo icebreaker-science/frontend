@@ -30,6 +30,7 @@ export class DeviceCreationComponent implements OnInit {
     germanPostalCode: '',
     institution: '',
     researchGroup: '',
+    disabled: false,
   };
 
 
