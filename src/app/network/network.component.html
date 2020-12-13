@@ -1,11 +1,38 @@
 <div class="component-container" *ngIf="nodes">
-  <div class="graph" #network>
-
+  <div class="graphwrapper">
+    <div class="progress" *ngIf="progress != 100">
+      <div class="progress-bar" role="progressbar" [ngStyle]="{width: progress + '%'}">
+        {{progress}}%
+      </div>
+    </div>
+    <div class="graph" #network></div>
   </div>
 
   <div
     class="panel"
   >
+    <button class="button" id="back-button" (click)="showCategoryGraph()" *ngIf="graphType != allGraphType.OVERVIEW">Back to overview</button>
+
+    <ngb-accordion #acc="ngbAccordion" activeIds="" id="options-accordion">
+      <ngb-panel title="Options">
+        <ng-template ngbPanelContent>
+          <h6>Min. number of papers</h6>
+          <div class="justify-content-center">
+            <span>1</span>
+            <ng-template #sliderTooltip>{{edgeSlider}}</ng-template>
+            <input class="w-75" type="range" min="1" max="100" [(ngModel)]="edgeSlider" (input)="changeSlider($event.target.value)" [tooltip]="sliderTooltip">
+            <span>100</span>
+          </div>
+          <h6>Hide edges</h6>
+          <input type="checkbox" [(ngModel)]="hideEdges" (input)="onHideEdgesChange($event.target.checked)">
+          <h6>Freeze Graph</h6>
+          <input type="checkbox" [(ngModel)]="freezeGraph" (input)="onFreezeGraphChange($event.target.checked)">
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+
+
+
     <input
       #keywordInput
       id="typeahead-basic"
@@ -13,7 +40,7 @@
       class="form-control"
       placeholder="Keyword"
       [ngbTypeahead]="searchKeyword"
-      (selectItem)="addKeyword($event, keywordInput)"
+      (selectItem)="addKeywordEvent($event, keywordInput)"
     />
 
     <div class="selected-nodes">
@@ -25,7 +52,7 @@
 
     <div *ngIf="papers" class="reference-list">
       <div class="reference-list__edge-name">
-        {{ tooltip.selectedEdge.node1 }} - {{ tooltip.selectedEdge.node2 }}
+        {{ tooltip.selectedEdge.node1Name }} - {{ tooltip.selectedEdge.node2Name }}
       </div>
       <div *ngFor="let p of papers" class="reference-list__paper">
         <div class="reference-list__paper__header">
@@ -47,6 +74,14 @@
 >
   <div class="network-tooltip__title">{{ tooltip.selectedNode.name }}</div>
   <div>Number publications: {{ tooltip.selectedNode.weight }}</div>
+  <div>Categories: {{ tooltip.selectedNode.categories}}</div>
+  <div *ngIf="selectedNodes.has(tooltip.selectedNode.name); else addKeywordBlock">
+    <a class="text-primary" (click)="removeKeyword(tooltip.selectedNode.name)">remove Keyword</a>
+  </div>
+  <ng-template #addKeywordBlock>
+    <a class="text-primary" (click)="addKeyword(tooltip.selectedNode.name)">add Keyword</a>
+  </ng-template>
+
 </div>
 
 <div
@@ -54,6 +89,18 @@
   class="network-tooltip"
   style="left: {{ tooltip.pos.left }}px; top: {{ tooltip.pos.top }}px;"
 >
-  <div class="network-tooltip__title">{{ tooltip.selectedEdge.node1 }} - {{ tooltip.selectedEdge.node2 }}</div>
+  <div class="network-tooltip__title">{{ tooltip.selectedEdge.node1Name }} - {{ tooltip.selectedEdge.node2Name }}</div>
   <div>Number publications: {{ tooltip.selectedEdge.weight }}</div>
+</div>
+
+<div
+  *ngIf="tooltip.selectedCategory"
+  class="network-tooltip"
+  style="left: {{ tooltip.pos.left }}px; top: {{ tooltip.pos.top }}px;"
+>
+  <div class="network-tooltip__title">{{ tooltip.selectedCategory.name }}</div>
+  <div>Number nodes: {{ tooltip.selectedCategory.weight }}</div>
+  <a class="text-primary" (click)="openCategoryGraph(tooltip.selectedCategory.name)">show category keywords</a>
+
+
 </div>

@@ -11,9 +11,9 @@
 .network-tooltip {
   position: absolute;
   width: 200px;
-  height: 80px;
   background: $white;
   border: 1px solid $darkblue;
+  padding: 5px;
 }
 
 
@@ -26,14 +26,14 @@
 
 .graph {
   border-right: 4px solid $lightgrey;
-  flex-grow: 1;
+  height: 100%;
 }
 
 
 /* The right side */
 
 .panel {
-  width: 400px;
+  width: 300px;
   display: flex;
   flex-direction: column;
 }
@@ -65,4 +65,26 @@
 .reference-list__paper__doi a {
   color: $blue;
   text-decoration: underline;
+}
+
+.progress {
+  width: 80%;
+  height: 20px;
+  position: relative;
+  top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.graphwrapper {
+  width: calc(100vw - 300px);
+}
+
+#back-button {
+  margin: 10px 30px;
+  font-size: smaller;
+}
+
+#options-accordion {
+  margin-bottom: 20px;
 }

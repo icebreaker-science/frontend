@@ -32,6 +32,7 @@ import {environment} from '../environments/environment';
 import { AvailabilityAddComponent } from './wiki-page/availability-add/availability-add.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
       siteKey: environment.captchaSiteKey,
       languageCode: 'en'
     }),
+    TooltipModule.forRoot(),
   ],
   providers: [
     {
