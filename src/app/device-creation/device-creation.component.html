@@ -1,4 +1,4 @@
-<div id="main">
+<div id="main" *ngIf="existingNetworkKeywords">
   <div class="container content">
     <div class="row">
       <div class="col-lg-12">
@@ -21,6 +21,20 @@
                 [(ngModel)]="device.description"
                 placeholder="A brief description of the device: For example, what is the purpose of this device? Which properties does it have? Feel free to add links to official documentations."
               ></textarea>
+              <label for="keywords">Keywords:</label>
+              <div class="input-form keyword-container">
+                <div class="keyword" *ngFor="let keyword of device.networkKeywords">
+                  {{ keyword }}
+                  <button (click)="removeKeyword(keyword)">x</button>
+                </div>
+                <input
+                  #keywordInput
+                  id="keywords"
+                  type="text"
+                  [ngbTypeahead]="searchKeyword"
+                  (selectItem)="addKeyword($event, keywordInput)"
+                />
+              </div>
               <label for="references">References:</label>
               <textarea
                 type="text" class="form-control input-form" id="references" name="references"

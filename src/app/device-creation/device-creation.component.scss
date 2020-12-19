@@ -13,3 +13,33 @@ textarea {
     font-weight: bold;
   }
 }
+
+.keyword-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+  }
+}
+
+.keyword {
+  margin: 5px 10px;
+  padding: 0 10px;
+  height: 35px;
+  border: 1px solid darkgray;
+  background: #eee;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 1px 1px #fff;
+
+  button {
+    outline: none;
+    background: none;
+    border: none;
+    padding: 0;
+    color: #616161;
+    margin-left: 10px;
+  }
+}
