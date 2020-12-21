@@ -11,6 +11,14 @@
         <div class="wiki-page-desc">
           <p>{{ wikiPage.description }}</p>
         </div>
+        <div class="wiki-page-keywords">
+          <span>Keywords</span>
+          <div class="wiki-page-keywords__list">
+            <div class="wiki-page-keywords__list__entry" *ngFor="let keyword of wikiPage.networkKeywords">
+              {{ keyword }}
+            </div>
+          </div>
+        </div>
         <div class="wiki-page-ref">
           <span>References</span>
           <p>{{ wikiPage.references }}</p>

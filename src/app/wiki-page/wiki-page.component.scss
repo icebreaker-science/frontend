@@ -19,11 +19,23 @@
     border-bottom: 1px solid $lightgrey;
   }
 
-  &-ref {
+  &-ref, &-keywords {
     margin-top: 35px;
 
     span {
       font-weight: bold;
+    }
+
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+
+      &__entry {
+        background: $loginBlue;
+        margin: 2px 5px;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
     }
   }
 

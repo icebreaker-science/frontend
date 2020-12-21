@@ -4,6 +4,10 @@ import { WikiPage } from '../_types/WikiPage';
 import { Router } from '@angular/router';
 import {Availability} from '../_types/Availability';
 import { environment } from '../../environments/environment';
+import { NetworkService } from '../network.service';
+import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -20,6 +24,7 @@ export class DeviceCreationComponent implements OnInit {
     type: 'device',
     title: '',
     description: '',
+    networkKeywords: [],
     references: '',
   };
 
@@ -33,14 +38,23 @@ export class DeviceCreationComponent implements OnInit {
     disabled: false,
   };
 
+  existingNetworkKeywords: Array<string>;
+
 
   constructor(
     private router: Router,
     private wikiService: WikiService,
+    private networkService: NetworkService,
   ) { }
 
 
   ngOnInit(): void {
+    this.init();
+  }
+
+
+  private async init() {
+    this.existingNetworkKeywords = (await this.networkService.getNodes()).map(node => node.name);
   }
 
 
@@ -67,5 +81,27 @@ export class DeviceCreationComponent implements OnInit {
     } else {
       this.imageError = null;
     }
+  }
+
+
+  searchKeyword = (text$: Observable<string>) => {
+    return text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map(term => term.length < 2 ? []
+        : this.existingNetworkKeywords.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+    );
+  }
+
+
+  async addKeyword($event: NgbTypeaheadSelectItemEvent<string>, input) {
+    $event.preventDefault();
+    input.value = '';
+    this.device.networkKeywords.push($event.item);
+  }
+
+
+  removeKeyword(keyword: string) {
+    this.device.networkKeywords = this.device.networkKeywords.filter(k => k !== keyword);
   }
 }

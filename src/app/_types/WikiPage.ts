@@ -3,6 +3,7 @@ export interface WikiPage {
   type: string;
   title: string;
   description: string;
+  networkKeywords: Array<string>;
   references?: string;
   image?: File;
 }
@@ -17,6 +18,7 @@ export function wikiPageToFormData(wikiPage: WikiPage) {
   data.append('description', wikiPage.description);
   data.append('title', wikiPage.title);
   data.append('type', wikiPage.type);
+  data.append('networkKeywords', wikiPage.networkKeywords.join(','));
   data.append('references', wikiPage.references);
   data.append('image', wikiPage.image);
   return data;
