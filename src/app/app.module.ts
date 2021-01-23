@@ -33,6 +33,7 @@ import { AvailabilityAddComponent } from './wiki-page/availability-add/availabil
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
+import { MarkdownModule } from 'ngx-markdown';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
       languageCode: 'en'
     }),
     TooltipModule.forRoot(),
+    MarkdownModule.forRoot(),
   ],
   providers: [
     {

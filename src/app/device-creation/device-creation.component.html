@@ -47,40 +47,6 @@
               <div class="error-container" *ngIf="this.imageError">
                 <span class="error-container-text">{{ imageError }}</span>
               </div>
-              <div class="form-group add-availability-check">
-                <input
-                  type="checkbox" class="form-check-input" id="addAvailability" name="addAvailability"
-                  [(ngModel)]="addAvailability"
-                />
-                <label class="form-check-label" for="addAvailability">
-                  This device is available in my research group/department and other users may contact me if they are
-                  interested in using it.
-                </label>
-              </div>
-
-              <label for="institution">Institution: *</label>
-              <input
-                type="text" class="form-control input-form" id="institution" name="institution"
-                [(ngModel)]="availability.institution" [disabled]="!addAvailability" [required]="addAvailability"
-              />
-              <label for="researchGroup">Research Group:</label>
-              <input
-                type="text" class="form-control input-form" id="researchGroup" name="researchGroup"
-                [(ngModel)]="availability.researchGroup" [disabled]="!addAvailability"
-              />
-              <label for="germanPostalCode">Postal Code: *</label>
-              <input
-                type="text" class="form-control input-form" id="germanPostalCode" name="germanPostalCode"
-                pattern="[0-9]{5}" [(ngModel)]="availability.germanPostalCode"
-                [disabled]="!addAvailability" [required]="addAvailability"
-                placeholder="The location of the device"
-              />
-              <label for="comment">Comment:</label>
-              <textarea
-                type="text" class="form-control input-form" id="comment" name="comment"
-                [(ngModel)]="availability.comment" [disabled]="!addAvailability"
-                placeholder="When should other users reach out to you? Are you offering paid services? Are you looking for cooperations?"
-              ></textarea>
               <div class="error-container" [hidden]="!this.error">
                 <span class="error-container-text">Something went wrong...</span>
               </div>

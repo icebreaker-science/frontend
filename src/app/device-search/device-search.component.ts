@@ -3,6 +3,8 @@ import { map } from 'rxjs/operators';
 import { WikiService } from '../wiki.service';
 import { PaginationInstance } from 'ngx-pagination';
 import { environment } from '../../environments/environment';
+import { AccountService } from '../account.service';
+import { WikiPage } from '../_types/WikiPage';
 
 
 @Component({
@@ -40,4 +42,11 @@ export class DeviceSearchComponent implements OnInit {
     this.config.currentPage = 1;
   }
 
+
+  getImageSrc(d: any) {
+    if (d.media) {
+      return this.mediaURL + d.media.id;
+    }
+    return 'assets/img/puzzlepiece.png';
+  }
 }

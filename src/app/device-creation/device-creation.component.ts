@@ -8,6 +8,7 @@ import { NetworkService } from '../network.service';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
+import { AccountService } from '../account.service';
 
 
 @Component({
@@ -28,16 +29,6 @@ export class DeviceCreationComponent implements OnInit {
     references: '',
   };
 
-  addAvailability = false;
-  availability: Availability = {
-    deviceId: null,
-    comment: '',
-    germanPostalCode: '',
-    institution: '',
-    researchGroup: '',
-    disabled: false,
-  };
-
   existingNetworkKeywords: Array<string>;
 
 
@@ -45,10 +36,15 @@ export class DeviceCreationComponent implements OnInit {
     private router: Router,
     private wikiService: WikiService,
     private networkService: NetworkService,
+    private accountService: AccountService,
   ) { }
 
 
   ngOnInit(): void {
+    if (!this.accountService.getUsername()) {
+      this.router.navigateByUrl('/login');
+      return;
+    }
     this.init();
   }
 
@@ -61,15 +57,9 @@ export class DeviceCreationComponent implements OnInit {
   async submit(): Promise<void> {
      try {
        const id = await this.wikiService.createWikiPage(this.device);
-       this.availability.deviceId = id;
-       if (this.addAvailability) {
-         await this.wikiService.sendDeviceData(this.availability);
-       }
-       console.log(`New device created, ID=${ id }.`);
        await this.router.navigateByUrl('/device-search');
      } catch (e) {
        this.error = true;
-       console.error('Something went wrong!', e);
      }
   }
 

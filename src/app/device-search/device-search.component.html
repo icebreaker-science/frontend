@@ -13,15 +13,24 @@
         </div>
       </div>
     </div>
+    <div class="row justify-content-end">
+      <div class="col-3">
+        <button routerLink="/device-creation" class="btn btn-primary">Add device</button>
+      </div>
+    </div>
       <div class="row justify-content-center">
         <div class="device-container col-lg-10">
           <div class="device-element" *ngFor="let d of devices$ | async | stringFilter: filter | paginate: config;">
             <div class="device-element-img">
-              <img src="{{mediaURL + d.media?.id}}" onerror="this.onerror=null; this.src='assets/img/logo.png'" class="img-thumbnail w-100 h-100" alt="">
+              <img
+                [src]="getImageSrc(d)"
+                class="img-thumbnail h-100"
+                alt=""
+              >
             </div>
             <div class="device-element-content">
               <h4 class="device-element-headline">{{ d.title }}</h4>
-              <p class="device-element-desc">{{ d.description.length > 100 ? d.description.slice(0,100) + '...' : d.description }}</p>
+              <p class="device-element-desc">{{ d.description.length > 200 ? d.description.slice(0,200) + '...' : d.description }}</p>
               <a [routerLink]="['/wiki-page', d.id]">
                 <button class="btn btn-info">More</button>
               </a>

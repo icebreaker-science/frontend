@@ -9,10 +9,12 @@
       </div>
       <div class="col-xl-6 wiki-page-container">
         <div class="wiki-page-desc">
-          <p>{{ wikiPage.description }}</p>
+          <markdown ngPreserveWhitespaces>
+            {{ wikiPage.description }}
+          </markdown>
         </div>
         <div class="wiki-page-keywords">
-          <span>Keywords</span>
+          <h4>Keywords</h4>
           <div class="wiki-page-keywords__list">
             <div class="wiki-page-keywords__list__entry" *ngFor="let keyword of wikiPage.networkKeywords">
               {{ keyword }}
@@ -20,8 +22,10 @@
           </div>
         </div>
         <div class="wiki-page-ref">
-          <span>References</span>
-          <p>{{ wikiPage.references }}</p>
+          <h4>References</h4>
+          <markdown ngPreserveWhitespaces>
+            {{ wikiPage.references }}
+          </markdown>
         </div>
       </div>
       <div class="col-xl-6 wiki-page-img">

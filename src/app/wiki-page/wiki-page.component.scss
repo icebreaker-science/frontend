@@ -22,10 +22,6 @@
   &-ref, &-keywords {
     margin-top: 35px;
 
-    span {
-      font-weight: bold;
-    }
-
     &__list {
       display: flex;
       flex-wrap: wrap;
@@ -57,5 +53,12 @@
         max-height: 250px;
       }
     }
+  }
+}
+
+
+markdown ::ng-deep {
+  ul {
+    margin-left: 30px;
   }
 }
