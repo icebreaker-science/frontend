@@ -1,17 +1,11 @@
 @import "../../../scss/helper/variables";
 
 .wiki-device {
-  &-hl {
-    margin-top: 1rem;
-    border-bottom: 1px solid $lightgrey;
-  }
-
-  &-subline {
-    margin: 1.5rem 0;
-  }
+  padding: 30px;
 
   &-offer {
     border-bottom: 1px solid $lightgrey;
+    margin-bottom: 20px;
 
     &:last-child {
       border-bottom: none;
@@ -22,17 +16,7 @@
     }
 
     &-button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-
-  @media (max-width: 991px) {
-    &-offer {
-      &-button {
-        margin-bottom: 1rem;
-      }
+      margin-bottom: 20px;
     }
   }
 }

@@ -1,5 +1,6 @@
 export interface Availability {
   id?: number;
+  accountId?: number;
   deviceId: number;
   comment?: string;
   germanPostalCode?: string;

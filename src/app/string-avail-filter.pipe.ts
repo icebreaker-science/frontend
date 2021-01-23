@@ -7,13 +7,17 @@ import {WikiPage} from './_types/WikiPage';
 })
 export class StringAvailFilterPipe implements PipeTransform {
 
-  transform(items: Availability[], filterText: string): Availability[] {
+  transform(items: Array<{ device: WikiPage, availability: Availability }> , filterText: string)
+    : Array<{ device: WikiPage, availability: Availability }> {
     const ft = filterText.toLocaleLowerCase();
     if (!filterText) {
       return items;
     }
     return items.filter( it => {
-      return it.comment.toLocaleLowerCase().includes(ft) || it.institution.toLocaleLowerCase().includes(ft);
+      return it.device.title.toLocaleLowerCase().includes(ft) ||
+        it.device.description.toLocaleLowerCase().includes(ft) ||
+        it.availability.comment.toLocaleLowerCase().includes(ft) ||
+        it.availability.institution.toLocaleLowerCase().includes(ft);
     });
   }
 

@@ -1,11 +1,16 @@
 <div id="main" class="wiki-page">
-  <div class="container" *ngIf="wikiPage">
-    <div class="row">
+  <div class="container-fluid" *ngIf="wikiPage">
+    <div class="row header">
+      <div class="col-12">
+        <h2>{{ wikiPage.title }}</h2>
+      </div>
+    </div>
+    <div class="row content">
       <div *ngIf="this.infoMessage" class="info-container col-12">
         <span>{{ infoMessage }}</span>
       </div>
-      <div class="col-12 wiki-page-hl">
-        <h2>{{ wikiPage.title }}</h2>
+      <div class="col-xl-6 wiki-page-img">
+        <img [src]="getImageSrc()" alt="">
       </div>
       <div class="col-xl-6 wiki-page-container">
         <div class="wiki-page-desc">
@@ -28,17 +33,15 @@
           </markdown>
         </div>
       </div>
-      <div class="col-xl-6 wiki-page-img">
-        <img [src]="getImageSrc()" alt="">
-      </div>
+
     </div>
-    <div [ngSwitch]="wikiPage?.type">
-      <app-wiki-page-device
-        *ngSwitchCase="'device'"
-        [wikiPage]="wikiPage"
-        (msgSent)="setMessage($event);"
-      >
-      </app-wiki-page-device>
-    </div>
+  </div>
+  <div [ngSwitch]="wikiPage?.type">
+    <app-wiki-page-device
+      *ngSwitchCase="'device'"
+      [wikiPage]="wikiPage"
+      (msgSent)="setMessage($event);"
+    >
+    </app-wiki-page-device>
   </div>
 </div>

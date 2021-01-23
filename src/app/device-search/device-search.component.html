@@ -1,21 +1,32 @@
 <div id="main">
   <div class="container-fluid content">
-    <div class="row justify-content-center">
-      <div class="col-lg-12">
-        <h2 class="text-center">Devices</h2>
+    <div class="row justify-content-center header">
+      <div class="col-lg-7">
+        <h2>Devices</h2>
+        <p>Are you looking for a specific device and/or someone who is familiar with it? Explore our latest devices!</p>
+        <div class="filter-container-inner">
+          <input
+            type="text"
+            class="form-control input-form"
+            id="filter" name="filter"
+            [(ngModel)]="filter"
+            (input)="onFilterChange()"
+            placeholder="Search"
+          />
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <button routerLink="/device-creation" class="btn btn-outline-dark add-device-button">Add device</button>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="filter-container col-10">
-        <div class="filter-container-inner">
-          <label for="filter">Filter: </label>
-          <input type="text" class="form-control input-form" id="filter" name="filter" [(ngModel)]="filter" (input)="onFilterChange()">
-        </div>
+
       </div>
     </div>
     <div class="row justify-content-end">
       <div class="col-3">
-        <button routerLink="/device-creation" class="btn btn-primary">Add device</button>
+
       </div>
     </div>
       <div class="row justify-content-center">

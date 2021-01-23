@@ -2,9 +2,22 @@
 
 .filter-container {
   &-inner {
-    margin: 0 auto;
     max-width: 500px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .input-form {
+      height: 40px;
+    }
   }
+}
+
+.add-device-button {
+  margin-top: 2.5rem;
+}
+
+.header {
+  background: $highlightAreaBackgroundBlue;
 }
 
 .device-container {
