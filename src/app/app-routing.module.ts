@@ -12,6 +12,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { EmailValidationComponent } from './email-validation/email-validation.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { DataPrivacyComponent } from './data-privacy/data-privacy.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'settings/profile', component: ProfilePageComponent},
   { path: 'validate-email', component: EmailValidationComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent},
-  { path: 'reset-password', component: ResetPasswordComponent}
+  { path: 'reset-password', component: ResetPasswordComponent},
+  { path: 'data-privacy', component: DataPrivacyComponent}
 ];
 
 @NgModule({

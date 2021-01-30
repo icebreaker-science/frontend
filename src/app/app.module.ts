@@ -33,6 +33,7 @@ import { AvailabilityAddComponent } from './wiki-page/availability-add/availabil
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
+import { DataPrivacyComponent } from './data-privacy/data-privacy.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
     ResetPasswordComponent,
     ForgotPasswordComponent,
     AvailabilityAddComponent,
+    DataPrivacyComponent,
   ],
   imports: [
     BrowserModule,
