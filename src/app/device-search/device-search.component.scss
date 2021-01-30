@@ -12,18 +12,21 @@
   }
 }
 
-.add-device-button {
-  margin-top: 2.5rem;
-}
-
 .header {
+  padding-top: 40px;
+  padding-bottom: 20px;
   background: $highlightAreaBackgroundBlue;
+
+  h2 {
+    margin-top: 0;
+  }
 }
 
 .device-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 20px;
 
   .device-element {
     position: relative;
@@ -61,4 +64,8 @@
       overflow: hidden;
     }
   }
+}
+
+.pagination {
+  margin-top: 50px;
 }
