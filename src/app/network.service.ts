@@ -104,7 +104,7 @@ export class NetworkService {
   getNodesFromCategory(category: string): Promise<KeywordNode[]> {
     return new Promise<KeywordNode[]>((resolve, reject) => {
       if (!this.nodes) {
-        reject;
+        reject();
       }
       resolve(this.nodes.filter(node => node.categories.find(c => c === category)));
     });
