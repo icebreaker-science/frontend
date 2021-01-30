@@ -1,39 +1,54 @@
 <div id="main">
   <div class="container-fluid content">
-    <div class="row justify-content-center">
-      <div class="col-lg-12">
-        <h2 class="text-center">Devices</h2>
+    <div class="row justify-content-center header">
+      <div class="col-lg-7">
+        <h2>Devices</h2>
+        <p>Are you looking for a specific device and/or someone who is familiar with it? Explore our latest entries!</p>
+        <div class="filter-container-inner">
+          <input
+            type="text"
+            class="form-control input-form"
+            id="filter" name="filter"
+            [(ngModel)]="filter"
+            (input)="onFilterChange()"
+            placeholder="Search"
+          />
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <button routerLink="/device-creation" class="btn btn-outline-dark">Add device</button>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="filter-container col-10">
-        <div class="filter-container-inner">
-          <label for="filter">Filter: </label>
-          <input type="text" class="form-control input-form" id="filter" name="filter" [(ngModel)]="filter" (input)="onFilterChange()">
-        </div>
+
       </div>
     </div>
-      <div class="row justify-content-center">
-        <div class="device-container col-lg-10">
-          <div class="device-element" *ngFor="let d of devices$ | async | stringFilter: filter | paginate: config;">
-            <div class="device-element-img">
-              <img src="{{mediaURL + d.media?.id}}" onerror="this.onerror=null; this.src='assets/img/logo.png'" class="img-thumbnail w-100 h-100" alt="">
-            </div>
-            <div class="device-element-content">
-              <h4 class="device-element-headline">{{ d.title }}</h4>
-              <p class="device-element-desc">{{ d.description.length > 100 ? d.description.slice(0,100) + '...' : d.description }}</p>
-              <a [routerLink]="['/wiki-page', d.id]">
-                <button class="btn btn-info">More</button>
-              </a>
-            </div>
+    <div class="row justify-content-center">
+      <div class="device-container col-lg-10">
+        <div class="device-element" *ngFor="let d of devices$ | async | stringFilter: filter | paginate: config;">
+          <div class="device-element-img">
+            <img
+              [src]="getImageSrc(d)"
+              class="img-thumbnail h-100"
+              alt=""
+            >
+          </div>
+          <div class="device-element-content">
+            <h4 class="device-element-headline">{{ d.title }}</h4>
+            <p class="device-element-desc">{{ d.description.length > 200 ? d.description.slice(0,200) + '...' : d.description }}</p>
+            <a [routerLink]="['/wiki-page', d.id]">
+              <button class="btn btn-info">More</button>
+            </a>
           </div>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <pagination-controls id="device_pagination"
-                             (pageChange)="onPageChange($event)"
-        ></pagination-controls>
-      </div>
+    </div>
+    <div class="row justify-content-center pagination">
+      <pagination-controls id="device_pagination"
+                           (pageChange)="onPageChange($event)"
+      ></pagination-controls>
+    </div>
   </div>
 </div>
 

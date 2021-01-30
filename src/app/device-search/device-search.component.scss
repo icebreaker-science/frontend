@@ -2,8 +2,23 @@
 
 .filter-container {
   &-inner {
-    margin: 0 auto;
     max-width: 500px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .input-form {
+      height: 40px;
+    }
+  }
+}
+
+.header {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  background: $highlightAreaBackgroundBlue;
+
+  h2 {
+    margin-top: 0;
   }
 }
 
@@ -11,15 +26,19 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 20px;
 
   .device-element {
     position: relative;
-    width: 300px;
+    width: 600px;
     margin: 0.5rem 0.5rem 1rem;
 
     &-img {
       position: relative;
-      width: 100%;
+      width: fit-content;
+      height: 100px;
+      margin-left: auto;
+      margin-right: auto;
       margin-bottom: -25px;
       padding: 0 1rem;
       z-index: 1;
@@ -45,4 +64,8 @@
       overflow: hidden;
     }
   }
+}
+
+.pagination {
+  margin-top: 50px;
 }

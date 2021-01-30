@@ -13,13 +13,16 @@
     <div class="header-nav">
       <ul class="header-list">
         <li class="header-list-item">
-          <a class="header-link" routerLink="/network">Discover</a>
+          <a class="header-link" routerLink="/">
+            <img src="../../assets/img/iglu.png" class="home-icon" />
+            Home
+          </a>
         </li>
         <li class="header-list-item">
-          <a class="header-link" routerLink="/device-search">Search Devices</a>
+          <a class="header-link" routerLink="/device-search">Devices</a>
         </li>
-        <li [hidden]="!userName" class="header-list-item">
-          <a class="header-link" routerLink="/device-creation">Add Device</a>
+        <li class="header-list-item">
+          <a class="header-link" routerLink="/network">Browse Network</a>
         </li>
         <li class="header-list-item">
           <a class="header-link" routerLink="/">About Us</a>

@@ -1,10 +1,12 @@
-import {Component, OnInit, Output} from '@angular/core';
-import {AccountService} from '../account.service';
-import {WikiService} from '../wiki.service';
-import {map} from 'rxjs/operators';
-import {PaginationInstance} from 'ngx-pagination';
-import {UserProfile} from '../_types/UserProfile';
-import {Availability} from '../_types/Availability';
+import { Component, OnInit, Output } from '@angular/core';
+import { AccountService } from '../account.service';
+import { WikiService } from '../wiki.service';
+import { map, mergeMap } from 'rxjs/operators';
+import { PaginationInstance } from 'ngx-pagination';
+import { UserProfile } from '../_types/UserProfile';
+import { Availability } from '../_types/Availability';
+import { forkJoin } from 'rxjs';
+import { WikiPage } from '../_types/WikiPage';
 
 @Component({
   selector: 'app-profile-page',
@@ -15,7 +17,10 @@ export class ProfilePageComponent implements OnInit {
 
   @Output() infoMessage: string;
   profile: UserProfile;
-  availabilities$: Availability [];
+  deviceAndAvailability$: Array<{
+    availability: Availability,
+    device: WikiPage,
+  }>;
   editForm = false;
   editAvailability: Availability;
   deleteForm = false;
@@ -23,11 +28,6 @@ export class ProfilePageComponent implements OnInit {
   // timeout for closing the window
   private infoMessageTimeOut = 1500;
 
-  public config: PaginationInstance = {
-    id: 'device_pagination',
-    itemsPerPage: 6,
-    currentPage: 1
-  };
   public filter = '';
 
   constructor(
@@ -44,8 +44,17 @@ export class ProfilePageComponent implements OnInit {
         this.profile = profile;
       },
       error => console.error(error));
-    this.wikiService.getDeviceAvailability({ownerId: userId}).subscribe(availabilities => this.availabilities$ = availabilities);
-
+    this.wikiService.getDeviceAvailability({ownerId: userId})
+      .pipe(mergeMap((availabilities: Availability[]) => {
+        return forkJoin(...availabilities.map(a => this.wikiService.getWikiPage(a.deviceId)
+          .pipe(map((wikiPage: WikiPage) => ({
+            availability: a,
+            device: wikiPage
+          })))));
+      }))
+      .subscribe(availabilities => {
+        this.deviceAndAvailability$ = availabilities;
+      });
   }
 
   titleDotCheck(title) {
@@ -60,12 +69,7 @@ export class ProfilePageComponent implements OnInit {
     }
   }
 
-  onPageChange(nmbr): void {
-    this.config.currentPage = nmbr;
-  }
-
   onFilterChange(): void {
-    this.config.currentPage = 1;
   }
 
   setModalOpened(): void {

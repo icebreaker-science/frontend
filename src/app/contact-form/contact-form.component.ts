@@ -3,6 +3,7 @@ import { Availability } from '../_types/Availability';
 import { BackendService } from '../backend.service';
 import {HttpHeaders} from '@angular/common/http';
 import {AccountService} from '../account.service';
+import { PublicUserProfile } from '../_types/PublicUserProfile';
 
 @Component({
   selector: 'app-contact-form',
@@ -11,7 +12,10 @@ import {AccountService} from '../account.service';
 })
 export class ContactFormComponent implements OnInit {
 
-  @Input() availability: Availability;
+  @Input() availability: {
+    availability: Availability,
+    profile: PublicUserProfile,
+  };
   @Output() hide: EventEmitter<void> = new EventEmitter<void>();
   @Output() msgSent: EventEmitter<void> = new EventEmitter<void>();
 
@@ -38,7 +42,7 @@ export class ContactFormComponent implements OnInit {
   send(contactForm): void {
     this.backendService.post(
       this.requestData,
-      `/device-availability/${this.availability.id}/contact`,
+      `/device-availability/${this.availability.availability.id}/contact`,
       { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
       .subscribe(
         () => {

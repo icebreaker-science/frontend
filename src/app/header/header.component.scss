@@ -28,6 +28,12 @@
     color: $grey;
   }
 
+  .home-icon {
+    height: 25px;
+    margin-right: 5px;
+    padding-bottom: 5px;
+  }
+
   &-inner {
     background-color: $white;
     display: flex;

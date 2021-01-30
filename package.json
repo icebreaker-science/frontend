@@ -29,6 +29,7 @@
     "keycharm": "^0.4.0",
     "ng-hcaptcha": "^1.0.0-beta.3",
     "ngx-bootstrap": "^6.1.0",
+    "ngx-markdown": "^11.0.1",
     "ngx-pagination": "^5.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",

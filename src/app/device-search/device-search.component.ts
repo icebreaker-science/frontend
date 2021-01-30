@@ -40,4 +40,11 @@ export class DeviceSearchComponent implements OnInit {
     this.config.currentPage = 1;
   }
 
+
+  getImageSrc(d: any) {
+    if (d.media) {
+      return this.mediaURL + d.media.id;
+    }
+    return 'assets/img/puzzlepiece.png';
+  }
 }
