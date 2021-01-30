@@ -28,50 +28,38 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-12">
-      <h2 class="text-center">Your devices</h2>
-    </div>
-    <div class="row justify-content-center">
-      <div class="filter-container col-10 my-4">
-        <div class="filter-container-inner">
-          <label for="filter">Filter: </label>
-          <input type="text" class="form-control input-form" id="filter" name="filter" [(ngModel)]="filter"
-                 (input)="onFilterChange()">
+    <div class="row justify-content-center col-10">
+      <div class="col-10">
+        <h2>My devices</h2>
+        <div class="filter-container">
+          <input
+            type="text" class="form-control input-form" id="filter" name="filter" [(ngModel)]="filter"
+            placeholder="Search"
+            (input)="onFilterChange()"
+          />
         </div>
-      </div>
-    </div>
-    <div class="text-center py-2 text-dark justify-content-left">
-      <div class="row justify-content-center">
-        <div class="device-container col-lg-10">
-          <div class="col-lg-12 ow jumbotron"
-               *ngFor="let da of deviceAndAvailability$ | stringAvailFilter: filter | paginate: config;">
 
-
-            <div class="lead my-2">
-              <span>Institution:<h3>{{ da.availability.institution }}</h3></span>
-              <span>comment: <p> {{ da.availability.comment }}</p></span>
-              <a class="mx-2 my-2" [routerLink]="['/wiki-page', da.availability.deviceId]">
-                <button class="btn btn-info">See Device</button>
+        <div class="device-container">
+          <div
+            *ngFor="let da of deviceAndAvailability$ | stringAvailFilter: filter;"
+            class="device-entry"
+          >
+            <div class="device-entry__title">
+              <a [routerLink]="['/wiki-page', da.availability.deviceId]">
+                {{ da.device.title }}
               </a>
-              <div class="row my-3 justify-content-center">
-                <div class="col-6">
-                  <a class="mx-2" (click)="openEditForm(da.availability)">
-                    <button class="btn btn-success">Edit</button>
-                  </a>
-                  <a class="mx-2" (click)="openDeleteForm(da.availability)">
-                    <button class="btn btn-danger">Delete</button>
-                  </a>
-                </div>
-              </div>
+            </div>
+            <div class="device-entry__comment">
+              {{ da.availability.comment }}
+            </div>
+            <div class="device-entry__actions">
+              <a (click)="openEditForm(da.availability)">Edit</a>
+              <a (click)="openDeleteForm(da.availability)">Delete</a>
             </div>
           </div>
         </div>
+
       </div>
-    </div>
-    <div class="row justify-content-center my-3">
-      <pagination-controls id="device_pagination"
-                           (pageChange)="onPageChange($event)"
-      ></pagination-controls>
     </div>
   </div>
 </div>

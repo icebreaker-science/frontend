@@ -3,8 +3,6 @@ import { map } from 'rxjs/operators';
 import { WikiService } from '../wiki.service';
 import { PaginationInstance } from 'ngx-pagination';
 import { environment } from '../../environments/environment';
-import { AccountService } from '../account.service';
-import { WikiPage } from '../_types/WikiPage';
 
 
 @Component({

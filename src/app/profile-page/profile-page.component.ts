@@ -28,11 +28,6 @@ export class ProfilePageComponent implements OnInit {
   // timeout for closing the window
   private infoMessageTimeOut = 1500;
 
-  public config: PaginationInstance = {
-    id: 'device_pagination',
-    itemsPerPage: 6,
-    currentPage: 1
-  };
   public filter = '';
 
   constructor(
@@ -60,7 +55,6 @@ export class ProfilePageComponent implements OnInit {
       .subscribe(availabilities => {
         this.deviceAndAvailability$ = availabilities;
       });
-
   }
 
   titleDotCheck(title) {
@@ -75,12 +69,7 @@ export class ProfilePageComponent implements OnInit {
     }
   }
 
-  onPageChange(nmbr): void {
-    this.config.currentPage = nmbr;
-  }
-
   onFilterChange(): void {
-    this.config.currentPage = 1;
   }
 
   setModalOpened(): void {
