@@ -7,6 +7,7 @@ import { map, mergeMap } from 'rxjs/operators';
 import { forkJoin } from 'rxjs';
 import { ProfileService } from '../../profile.service';
 import { PublicUserProfile } from '../../_types/PublicUserProfile';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -35,6 +36,7 @@ export class WikiPageDeviceComponent implements OnInit {
     private wikiService: WikiService,
     private accountService: AccountService,
     private profileService: ProfileService,
+    private router: Router,
   ) {
     this.isLoggedIn = accountService.isLoginValid();
   }
@@ -78,6 +80,10 @@ export class WikiPageDeviceComponent implements OnInit {
 
 
   openContactForm(availability): void {
+    if (!this.isLoggedIn) {
+      this.router.navigateByUrl('/login');
+      return;
+    }
     this.setModalOpened();
     this.contactAvailability = availability;
     this.contactForm = true;
