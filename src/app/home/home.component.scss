@@ -34,7 +34,6 @@
   .overview {
     background-color: $lightgreen;
     padding: 4rem 0 1.5rem;
-    margin-bottom: 5rem;
 
     &-container {
       min-height: 95px;
@@ -43,33 +42,55 @@
 
       &-desc {
         margin: 0;
-      }
-    }
-  }
 
-  .logo-container {
-    text-align: center;
+        a {
+          color: inherit;
 
-    &-hl {
-      margin-bottom: 2rem;
-    }
-
-    &-element {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 3rem;
-
-      a {
-        display: block;
-        width: 100%;
-        max-width: 350px;
-
-        img {
-          width: 100%;
+          &:hover {
+            color: #f8b302;
+          }
         }
       }
     }
   }
+
+  .description {
+    p, ul, h1, h2, h3, h4, h5, h6 {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      padding-left: 30px;
+    }
+  }
+
+  .team {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .team__member {
+    width: 250px;
+    margin: 10px 25px 80px;
+  }
+
+  .team__member__image {
+    margin-bottom: 30px;
+
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 100%;
+    }
+  }
+
+  .team__member__short {
+    font-size: small;
+  }
+
 
   @media (max-width: 1440px) {
     .welcome {
@@ -141,13 +162,6 @@
           img {
             width: auto;
           }
-        }
-      }
-    }
-    .logo-container {
-      &-element {
-        a {
-          max-width: 250px;
         }
       }
     }

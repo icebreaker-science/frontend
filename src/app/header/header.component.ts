@@ -8,6 +8,7 @@ import { NavigationStart, Router} from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  DEVELOPMENT_MODE = false;
   userName: string;
   navOpen = false;
 
