@@ -186,14 +186,14 @@ export class NetworkComponent implements AfterViewInit {
     );
   }
 
-  async ngAfterViewInit(): Promise<void> {
-    await this.initData();
+  ngAfterViewInit(): void {
+    this.initData();
     // wait until fully loaded
-    this.ql.changes.subscribe(async () => {
+    this.ql.changes.subscribe(() => {
       // draw overview only on first view change
       if (!this.loaded) {
         this.el = this.ql.first;
-        await this.drawCategoryGraph();
+        this.drawCategoryGraph();
       }
       this.loaded = true;
     });
