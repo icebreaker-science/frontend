@@ -12,12 +12,12 @@ export class HomeComponent implements OnInit {
     {
       name: 'Ali asghar Maleki',
       image: 'empty.jpg',
-      short: 'TU Kaiserslautern - Student (Computer science)',
+      short: 'TU Kaiserslautern - Student (Computer Science)',
     },
     {
       name: 'Annette Bieniusa',
       image: 'annette.jpg',
-      short: 'TU Kaiserslautern - Academic Counsel (Computer science)',
+      short: 'TU Kaiserslautern - Academic Counsel (Computer Science)',
     },
     {
       name: 'Benjamin Wolf',
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     {
       name: 'Daniel Jenet',
       image: 'empty.jpg',
-      short: 'TU Kaiserslautern - Student (Computer science)',
+      short: 'TU Kaiserslautern - Student (Computer Science)',
     },
     {
       name: 'Elisabeth von der Esch',
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
     {
       name: 'Michael Youssef',
       image: 'empty.jpg',
-      short: 'TU Kaiserslautern - Student (Computer science)',
+      short: 'TU Kaiserslautern - Student (Computer Science)',
     },
     {
       name: 'Sofia Beliakova',
