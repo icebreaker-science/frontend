@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
     },
     {
       name: 'Lukas Vordemann',
-      image: 'lukas.jpg',
+      image: 'empty.jpg',
       short: 'TU Munich - Student (Computer Science)',
     },
     {
